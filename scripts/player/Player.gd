@@ -39,7 +39,7 @@ func _andando():
 		anim.play("andando_para_baixo")
 	elif int(player_velo.y) < 0.0 :
 		anim.play("andando_de_costas")
-	elif int(player_velo.y) == 0.0:
+	elif int(player_velo.y) == 0:
 		anim.play("andando_de_frente")
 	
 	_move()
@@ -78,7 +78,7 @@ func _get_direction(): #pega a posição que o player vai se mover
 
 func _move(): #aplica velocidade no player o fazendo se mover para a direção indicada
 	var dir = _get_direction()
-	player_velo = lerp(player_velo,dir.normalized() * spd, 0.2)
+	player_velo = lerp(player_velo,dir.normalized() * spd, 0.5)
 	
 	if dir.x != 0 or dir.y != 0:
 		se_moveu = true
