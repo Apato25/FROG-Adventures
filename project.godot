@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Frog Adventures"
+run/main_scene="res://cenas/cenas de teste/Teste.tscn"
 config/icon="res://icon.png"
 
 [display]
