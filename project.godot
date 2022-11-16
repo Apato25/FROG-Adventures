@@ -24,6 +24,10 @@ config/name="Frog Adventures"
 run/main_scene="res://cenas/cenas de teste/Teste.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://scripts/Global_scripts/global.gd"
+
 [display]
 
 window/size/width=384

@@ -71,6 +71,7 @@ func _atacando():
 		$player_pos2d.scale.x = -1 if mouse_pos.x < 0 else 1
 	
 	
+	Global.can_attack = true
 	esta_atacando = true
 	_set_state(_check_atacando())
 
@@ -99,6 +100,7 @@ func _check_atacando():
 	if Input.is_action_pressed("Attack") == false and esta_atacando == true:
 		new_state = parado
 		lingua.z_index = -1
+		Global.can_attack = false
 		$cooldown_ataque.start()
 	return new_state
 	
