@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/peixe_frente.png-4a72bb6c899ff1094ee549e35d7f7427.stex"
+path="res://.import/tongue_test2.png-797c252ba0bc48310e65d9e588c2a69e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/peixe_frente.png"
-dest_files=[ "res://.import/peixe_frente.png-4a72bb6c899ff1094ee549e35d7f7427.stex" ]
+source_file="res://tongue_test2.png"
+dest_files=[ "res://.import/tongue_test2.png-797c252ba0bc48310e65d9e588c2a69e.stex" ]
 
 [params]
 
