@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/peixe_costa.png-ba4596651cd920363ecd51320d4677f7.stex"
+path="res://.import/tongue_test.png-99f385fcd67a460798239933b100f111.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player/peixe_costa.png"
-dest_files=[ "res://.import/peixe_costa.png-ba4596651cd920363ecd51320d4677f7.stex" ]
+source_file="res://tongue_test.png"
+dest_files=[ "res://.import/tongue_test.png-99f385fcd67a460798239933b100f111.stex" ]
 
 [params]
 
