@@ -12,10 +12,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Attack") == true:
 		posLingua.position = posLingua.position.linear_interpolate(mouse_pos.limit_length(reach), delta * 20)
 		lingua.set_point_position(1,posLingua.position)
-		get_parent()._set_state(2)
-		
 	
 	if Input.is_action_pressed("Attack") == false:
-		posLingua.position = posLingua.position.linear_interpolate(inipos.position, delta * 20)
+		posLingua.position = posLingua.position.linear_interpolate(inipos.position, delta * 40)
 		lingua.set_point_position(1,posLingua.position)
-		get_parent()._set_state(0)
+
+
