@@ -17,18 +17,19 @@ func _physics_process(_delta):
 			_parado()
 		andando:
 			_andando()
+		atacando:
+			_atacando()
 	
-	$frogSpr.scale.x = 1 if player_velo.x <= 0 else -1
 	_set_state(_check_state())
+	
+	if player_velo.x:
+		$frogSpr.scale.x = 1 if player_velo.x < 0 else -1
 
 #-----------------------------------------------
 
 func _parado():
 	anim.play("parado")
-	
 	_move()
-#	_set_state(_check_parado())
-
 
 func _andando():
 	var animation = (
@@ -38,6 +39,11 @@ func _andando():
 	)
 	anim.play(animation)
 	_move()
+
+#-----------------------------------------------
+
+func _atacando():
+	player_velo = Vector2.ZERO
 
 #-----------------------------------------------
 
