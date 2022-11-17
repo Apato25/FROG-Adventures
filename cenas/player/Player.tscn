@@ -372,5 +372,7 @@ texture = ExtResource( 3 )
 hframes = 4
 
 [node name="cooldown_ataque" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="timeout" from="cooldown_ataque" to="." method="_on_cooldown_ataque_timeout"]

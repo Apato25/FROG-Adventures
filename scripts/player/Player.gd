@@ -121,9 +121,9 @@ func _get_direction(): #pega a posição que o player vai se mover
 
 func _move(): #aplica velocidade no player o fazendo se mover para a direção indicada
 	var dir = _get_direction()
-	player_velo = lerp(player_velo,dir.normalized() * spd, 0.2)
+	player_velo = dir.normalized() * spd
 	se_moveu = 1 if dir else 0
-	player_velo = move_and_slide(player_velo)
+	player_velo = lerp(player_velo,move_and_slide(player_velo),0.1)
 
 
 func _on_cooldown_ataque_timeout():
