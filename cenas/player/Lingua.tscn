@@ -6,12 +6,10 @@
 [ext_resource path="res://shaders/outline.gdshader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 4 )
-shader_param/outline_color = Color( 0.298039, 0.333333, 0.517647, 1 )
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 4 )
-shader_param/outline_color = Color( 0.298039, 0.333333, 0.517647, 1 )
+shader_param/outline_color = Color( 0.188235, 0.168627, 0.270588, 1 )
 
 [node name="Lingua" type="Node2D"]
 script = ExtResource( 1 )
