@@ -36,13 +36,15 @@ func _parado():
 	_set_state(_check_parado())
 
 func _andando():
+	
 	var animation = (
-		"andando_para_baixo" if int(player_velo.y) > 0
-		else "andando_de_costas" if int(player_velo.y) < 0
+		"andando_para_baixo" if _get_direction().y > 0
+		else "andando_de_costas" if _get_direction().y < 0
 		else "andando_de_frente"
 	)
 	
 	anim.play(animation)
+	
 	
 	if player_velo.x:
 		$player_pos2d.scale.x = -1 if player_velo.x < 0 else 1
@@ -121,9 +123,9 @@ func _get_direction(): #pega a posição que o player vai se mover
 
 func _move(): #aplica velocidade no player o fazendo se mover para a direção indicada
 	var dir = _get_direction()
-	player_velo = dir.normalized() * spd
+	player_velo = lerp(player_velo,dir.normalized() * spd,0.2)
 	se_moveu = 1 if dir else 0
-	player_velo = lerp(player_velo,move_and_slide(player_velo),0.1)
+	player_velo = move_and_slide(player_velo)
 
 
 func _on_cooldown_ataque_timeout():
