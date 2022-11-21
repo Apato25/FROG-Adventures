@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sprites/flower/teste_flower.png" type="Texture" id=1]
 [ext_resource path="res://scripts/flower/Flor.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://sprites/flower/Lifebar_progress.png" type="Texture" id=5]
 [ext_resource path="res://sprites/flower/Lifebar_over.png" type="Texture" id=6]
 [ext_resource path="res://sprites/flower/Lifebar_under.png" type="Texture" id=7]
-[ext_resource path="res://cenas/player/Player.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Flor_Nivel1"
@@ -78,5 +77,3 @@ texture_under = ExtResource( 7 )
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 5 )
 script = ExtResource( 4 )
-
-[node name="Player" parent="." instance=ExtResource( 8 )]

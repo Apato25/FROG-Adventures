@@ -21,7 +21,9 @@ func _physics_process(delta):
 			flor_max_life = 500
 			anim.play("Flor_Nivel2")
 	
-	current_life -= 0.5
+	current_life -= 0.5 #faz a flor mperder vida
+	
+	#teste de cura da vida da flor
 	if current_life == 0:
 		current_life = flor_max_life
 	print(flor_xp)
