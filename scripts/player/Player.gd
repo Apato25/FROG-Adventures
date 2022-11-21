@@ -3,7 +3,7 @@ extends KinematicBody2D
 var spd = 100.0
 var player_velo = Vector2.ZERO
 onready var anim := $player_pos2d/animFrog
-onready var lingua := $player_pos2d/Lingua
+onready var lingua := $Lingua
 
 var esta_atacando := false
 var se_moveu := false
@@ -53,24 +53,25 @@ func _andando():
 	_set_state(_check_andando())
 
 func _atacando():
-	var linguar_pos = $player_pos2d/Lingua/pos_lingua
+	var lingua_pos = $Lingua/pos_lingua
 	var mouse_pos = get_local_mouse_position()
 	
-	if linguar_pos.position.y > 0 and linguar_pos.position.x < 30:
+	if lingua_pos.position.y > 0 and lingua_pos.position.x < 30:
 		anim.play("atacando_para_baixo")
 		lingua.z_index = 1
 		
-	elif linguar_pos.position.y < 0:
+	elif lingua_pos.position.y < 0:
 		anim.play("atacando_para_cima")
 		lingua.z_index = -1
 		
-	elif linguar_pos.position.y > 0 and linguar_pos.position.x > 30:
+	elif lingua_pos.position.y > 0 and lingua_pos.position.x > 30:
 		anim.play("atacando_para_frente")
 		lingua.z_index = 1
 		
 	
-	if linguar_pos.position.x:
+	if lingua_pos.position.x:
 		$player_pos2d.scale.x = -1 if mouse_pos.x < 0 else 1
+		$Lingua.position.x = -3 if mouse_pos.x < 0 else 3
 	
 	
 	Global.can_attack = true
