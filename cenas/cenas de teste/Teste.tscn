@@ -1,39 +1,49 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://cenas/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/enemies/enemy_basic.tscn" type="PackedScene" id=2]
 [ext_resource path="res://cenas/enemies/enemy_gunner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sprites/maps/background_back.png" type="Texture" id=4]
-[ext_resource path="res://sprites/maps/background_front_pink.png" type="Texture" id=5]
+[ext_resource path="res://cenas/maps/Map_01.tscn" type="PackedScene" id=4]
 [ext_resource path="res://cenas/flower/Flor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/flower/Lifebar_under.png" type="Texture" id=7]
 [ext_resource path="res://sprites/flower/Lifebar_progress.png" type="Texture" id=8]
 [ext_resource path="res://sprites/flower/Lifebar_over.png" type="Texture" id=9]
 [ext_resource path="res://scripts/flower/Controle_flor.gd" type="Script" id=10]
 
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+uniform float speed : hint_range(0.05, 0.5) = 0.1;
+uniform float strength : hint_range(0.01, 0.5) = 0.1;
+
+void fragment(){
+	
+	//sample noise
+	float noise_value = texture(noise,UV + TIME * speed).r;
+	
+	COLOR = texture(SCREEN_TEXTURE,SCREEN_UV - (strength / 2.0) + vec2(noise_value) * strength);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=13]
+
+[sub_resource type="NoiseTexture" id=12]
+seamless = true
+noise = SubResource( 13 )
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 9 )
+shader_param/speed = 0.05
+shader_param/strength = 0.022
+shader_param/noise = SubResource( 12 )
+
 [node name="Teste" type="Node2D"]
 
-[node name="background" type="Node2D" parent="."]
-
-[node name="Background_back" type="Sprite" parent="background"]
-position = Vector2( 168, 94.5 )
-z_index = -2
-texture = ExtResource( 4 )
-
-[node name="Background_front" type="Sprite" parent="background"]
-position = Vector2( 168, 94.5 )
-z_index = 2
-texture = ExtResource( 5 )
-
-[node name="mapLimit" type="StaticBody2D" parent="background"]
-visible = false
-collision_layer = 8
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background/mapLimit"]
-polygon = PoolVector2Array( -1, 53, 0, 0, 336, 0, 336, 46, 284, 31, 186, 30, 153, 36, 148, 29, 74, 29, 24, 44, 6, 53 )
+[node name="Map_01" parent="." instance=ExtResource( 4 )]
 
 [node name="UI" type="Node2D" parent="."]
 position = Vector2( 168, 82 )
+z_index = 1
 
 [node name="life_bar" type="TextureProgress" parent="UI"]
 margin_left = -12.0
@@ -46,12 +56,22 @@ texture_progress = ExtResource( 8 )
 script = ExtResource( 10 )
 
 [node name="Flor" parent="." instance=ExtResource( 6 )]
+z_index = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 148, 63 )
+z_index = 1
 
 [node name="enemy_basic" parent="." instance=ExtResource( 2 )]
 position = Vector2( 72, 157 )
+z_index = 1
 
 [node name="enemy_gunner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 216, 136 )
+z_index = 1
+
+[node name="distortion" type="ColorRect" parent="."]
+material = SubResource( 14 )
+margin_top = 29.0
+margin_right = 336.0
+margin_bottom = 189.0

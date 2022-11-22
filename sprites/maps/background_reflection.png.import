@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_front.png-5ef0ffbb00667d53c516d31e1763602d.stex"
+path="res://.import/background_reflection.png-44c280a1d1f9705db11fd9b653b09c76.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/maps/background_front.png"
-dest_files=[ "res://.import/background_front.png-5ef0ffbb00667d53c516d31e1763602d.stex" ]
+source_file="res://sprites/maps/background_reflection.png"
+dest_files=[ "res://.import/background_reflection.png-44c280a1d1f9705db11fd9b653b09c76.stex" ]
 
 [params]
 
