@@ -16,20 +16,34 @@
 [node name="background" type="Node2D" parent="."]
 
 [node name="Background_back" type="Sprite" parent="background"]
-position = Vector2( 168, 94 )
+position = Vector2( 168, 94.5 )
 z_index = -2
 texture = ExtResource( 4 )
 
 [node name="Background_front" type="Sprite" parent="background"]
-position = Vector2( 168, 94 )
+position = Vector2( 168, 94.5 )
 z_index = 2
 texture = ExtResource( 5 )
 
 [node name="mapLimit" type="StaticBody2D" parent="background"]
+visible = false
 collision_layer = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background/mapLimit"]
 polygon = PoolVector2Array( -1, 53, 0, 0, 336, 0, 336, 46, 284, 31, 186, 30, 153, 36, 148, 29, 74, 29, 24, 44, 6, 53 )
+
+[node name="UI" type="Node2D" parent="."]
+position = Vector2( 168, 82 )
+
+[node name="life_bar" type="TextureProgress" parent="UI"]
+margin_left = -12.0
+margin_top = 28.0
+margin_right = 11.0
+margin_bottom = 33.0
+texture_under = ExtResource( 7 )
+texture_over = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+script = ExtResource( 10 )
 
 [node name="Flor" parent="." instance=ExtResource( 6 )]
 
@@ -41,18 +55,3 @@ position = Vector2( 72, 157 )
 
 [node name="enemy_gunner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 216, 136 )
-
-[node name="UI" type="Node2D" parent="."]
-position = Vector2( 168, 80 )
-
-[node name="UI_flor" type="CanvasLayer" parent="UI"]
-
-[node name="life_bar" type="TextureProgress" parent="UI/UI_flor"]
-margin_left = 156.0
-margin_top = 108.0
-margin_right = 179.0
-margin_bottom = 113.0
-texture_under = ExtResource( 7 )
-texture_over = ExtResource( 9 )
-texture_progress = ExtResource( 8 )
-script = ExtResource( 10 )
