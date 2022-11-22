@@ -56,12 +56,12 @@ texture = ExtResource( 3 )
 
 [node name="Background_front_wood_spr" type="Sprite" parent="background"]
 position = Vector2( 168, 94.5 )
-z_index = 2
+z_index = 3
 texture = SubResource( 3 )
 
 [node name="Background_leafs_spr" type="Sprite" parent="background"]
 position = Vector2( 168, 94.5 )
-z_index = 2
+z_index = 4
 texture = SubResource( 4 )
 
 [node name="mapLimit" type="StaticBody2D" parent="background"]

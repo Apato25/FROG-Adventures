@@ -34,26 +34,12 @@ noise = SubResource( 13 )
 [sub_resource type="ShaderMaterial" id=14]
 shader = SubResource( 9 )
 shader_param/speed = 0.05
-shader_param/strength = 0.022
+shader_param/strength = 0.03
 shader_param/noise = SubResource( 12 )
 
 [node name="Teste" type="Node2D"]
 
 [node name="Map_01" parent="." instance=ExtResource( 4 )]
-
-[node name="UI" type="Node2D" parent="."]
-position = Vector2( 168, 82 )
-z_index = 1
-
-[node name="life_bar" type="TextureProgress" parent="UI"]
-margin_left = -12.0
-margin_top = 28.0
-margin_right = 11.0
-margin_bottom = 33.0
-texture_under = ExtResource( 7 )
-texture_over = ExtResource( 9 )
-texture_progress = ExtResource( 8 )
-script = ExtResource( 10 )
 
 [node name="Flor" parent="." instance=ExtResource( 6 )]
 z_index = 1
@@ -75,3 +61,17 @@ material = SubResource( 14 )
 margin_top = 29.0
 margin_right = 336.0
 margin_bottom = 189.0
+
+[node name="UI" type="Node2D" parent="."]
+position = Vector2( 168, 82 )
+z_index = 1
+
+[node name="life_bar" type="TextureProgress" parent="UI"]
+margin_left = -12.0
+margin_top = 28.0
+margin_right = 11.0
+margin_bottom = 33.0
+texture_under = ExtResource( 7 )
+texture_over = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+script = ExtResource( 10 )

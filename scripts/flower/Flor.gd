@@ -11,7 +11,7 @@ var flor_xp = 0
 
 var flor_life_update = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	flor_levelup()
 	match flor_state:
 		Flor_0:

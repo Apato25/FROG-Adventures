@@ -58,21 +58,20 @@ func _atacando():
 	
 	if lingua_pos.position.y > 0 and lingua_pos.position.x < 30 and lingua_pos.position.x > -30:
 		anim.play("atacando_para_baixo")
-		lingua.z_index = 2
+		lingua.z_index = 1
 		
 	elif lingua_pos.position.y < 0:
 		anim.play("atacando_para_cima")
 		lingua.z_index = 0
-		
-	elif lingua_pos.position.y > 0 and (lingua_pos.position.x > 30 or lingua_pos.position.x < -30):
+
+	elif lingua_pos.position.y > 0 and lingua_pos.position.x > 30 or lingua_pos.position.y > 0 and lingua_pos.position.x < -30:
 		anim.play("atacando_para_frente")
-		lingua.z_index = 2
+		lingua.z_index = 1
 	
 	print(lingua_pos.position.x)
-		
 	if lingua_pos.position.x:
 		$player_pos2d.scale.x = -1 if mouse_pos.x < 0 else 1
-		$Lingua.position.x = -3 if mouse_pos.x < 0 else 3
+		lingua.position.x = -3 if mouse_pos.x < 0 else 3
 	
 	
 	Global.can_attack = true
