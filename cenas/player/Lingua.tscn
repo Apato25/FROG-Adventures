@@ -9,7 +9,7 @@
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 4 )
-shader_param/outline_color = Color( 0.188235, 0.168627, 0.270588, 1 )
+shader_param/outline_color = Color( 0.898039, 0.898039, 1, 1 )
 
 [node name="Lingua" type="Node2D"]
 script = ExtResource( 1 )
