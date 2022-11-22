@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/maps/background_back.png" type="Texture" id=2]
+[ext_resource path="res://sprites/maps/background_flowers.png" type="Texture" id=3]
+[ext_resource path="res://sprites/maps/background_flowers_reflection.png" type="Texture" id=4]
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform bool enable_shader = false;
+uniform float WAVINESS = 60.0;
+uniform float WAVE_SPEED = 10.0;
+uniform float WAVE_DAMPING = 1100.0;
+void fragment() {
+    //COLOR = texture(TEXTURE, UV + vec2(sin(WAVINESS * UV.y + (WAVE_SPEED * TIME)) / WAVE_DAMPING, 0));
+    if (enable_shader) {
+        COLOR = texture(TEXTURE, UV + vec2(sin(WAVINESS * UV.y + (WAVE_SPEED * TIME)) / WAVE_DAMPING, 0));
+    } else {
+        COLOR = texture(TEXTURE, UV);
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/enable_shader = true
+shader_param/WAVINESS = 10.0
+shader_param/WAVE_SPEED = 5.0
+shader_param/WAVE_DAMPING = 1100.0
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/background_front_woods.png-63598a9fbad513aa929e1f04025fa7f5.stex"
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/background_front_leafs.png-2d52d926bfe23d81126d8711c00a35fe.stex"
+
+[node name="Map_01" type="Node2D"]
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="Background_back" type="Sprite" parent="background"]
+position = Vector2( 168, 94.5 )
+z_index = -2
+texture = ExtResource( 2 )
+
+[node name="Background_flower_reflection" type="Sprite" parent="background"]
+modulate = Color( 1, 1, 1, 0.392157 )
+material = SubResource( 8 )
+position = Vector2( 168, 94.5 )
+z_index = -2
+texture = ExtResource( 4 )
+
+[node name="Background_flower" type="Sprite" parent="background"]
+position = Vector2( 168, 94.5 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="Background_front_wood_spr" type="Sprite" parent="background"]
+position = Vector2( 168, 94.5 )
+z_index = 2
+texture = SubResource( 3 )
+
+[node name="Background_leafs_spr" type="Sprite" parent="background"]
+position = Vector2( 168, 94.5 )
+z_index = 2
+texture = SubResource( 4 )
+
+[node name="mapLimit" type="StaticBody2D" parent="background"]
+visible = false
+collision_layer = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background/mapLimit"]
+polygon = PoolVector2Array( -1, 53, 0, 0, 336, 0, 336, 46, 284, 31, 186, 30, 153, 36, 148, 29, 74, 29, 24, 44, 6, 53 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_front_pink.png-f6507a8087d0d83a7801c15e2a2b62e8.stex"
+path="res://.import/background_flowers.png-653cef2d20f71f8ac71fa973c67c10b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/maps/background_front_pink.png"
-dest_files=[ "res://.import/background_front_pink.png-f6507a8087d0d83a7801c15e2a2b62e8.stex" ]
+source_file="res://sprites/maps/background_flowers.png"
+dest_files=[ "res://.import/background_flowers.png-653cef2d20f71f8ac71fa973c67c10b4.stex" ]
 
 [params]
 
