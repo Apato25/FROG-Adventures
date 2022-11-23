@@ -58,7 +58,7 @@ z_index = 1
 
 [node name="distortion" type="ColorRect" parent="."]
 material = SubResource( 14 )
-margin_top = 29.0
+margin_top = 32.0
 margin_right = 336.0
 margin_bottom = 189.0
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/player/Lingua.gd" type="Script" id=1]
 [ext_resource path="res://tongue_test.png" type="Texture" id=2]
 [ext_resource path="res://tongue_test2.png" type="Texture" id=3]
-[ext_resource path="res://shaders/outline.gdshader" type="Shader" id=4]
 
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
@@ -28,10 +27,6 @@ shader_param/WAVINESS = 100.0
 shader_param/WAVE_SPEED = 50.0
 shader_param/WAVE_DAMPING = 1100.0
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 4 )
-shader_param/outline_color = Color( 0.898039, 0.898039, 1, 1 )
-
 [node name="Lingua" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -48,7 +43,6 @@ texture_mode = 1
 [node name="pos_lingua" type="Position2D" parent="lingua_normal"]
 
 [node name="Sprite" type="Sprite" parent="lingua_normal/pos_lingua"]
-material = SubResource( 2 )
 texture = ExtResource( 2 )
 
 [node name="pos_inicio" type="Position2D" parent="lingua_normal"]
@@ -69,7 +63,6 @@ texture_mode = 1
 [node name="pos_lingua" type="Position2D" parent="lingua__reflection"]
 
 [node name="Sprite" type="Sprite" parent="lingua__reflection/pos_lingua"]
-material = SubResource( 2 )
 texture = ExtResource( 2 )
 
 [node name="pos_inicio" type="Position2D" parent="lingua__reflection"]

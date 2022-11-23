@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://shaders/outline.gdshader" type="Shader" id=2]
 [ext_resource path="res://sprites/player/Frog_ataques.png" type="Texture" id=3]
 [ext_resource path="res://sprites/player/Frog_andando_de_frente_para_baixo.png" type="Texture" id=4]
 [ext_resource path="res://sprites/player/Frog_andando_de_frente.png" type="Texture" id=5]
@@ -624,10 +623,6 @@ tracks/5/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = ExtResource( 2 )
-shader_param/outline_color = Color( 0.898039, 0.898039, 1, 1 )
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -653,7 +648,6 @@ anims/atacando_para_frente = SubResource( 11 )
 anims/parado = SubResource( 4 )
 
 [node name="frogSpr" type="Sprite" parent="player_pos2d"]
-material = SubResource( 7 )
 position = Vector2( -63.156, -3.51559 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
@@ -663,7 +657,6 @@ hframes = 4
 
 [node name="reflection" type="Sprite" parent="player_pos2d"]
 modulate = Color( 1, 1, 1, 0.545098 )
-material = SubResource( 7 )
 position = Vector2( -63.156, 25.4844 )
 rotation = 3.14159
 z_index = -1

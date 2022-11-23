@@ -1,16 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprites/flower/teste_flower.png" type="Texture" id=1]
 [ext_resource path="res://scripts/flower/Flor.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://shaders/outline.gdshader" type="Shader" id=4]
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 4 )
-shader_param/outline_color = Color( 0.898039, 0.898039, 1, 1 )
+[ext_resource path="res://sprites/flower/flower_lunar/flower_stage02.png" type="Texture" id=3]
+[ext_resource path="res://sprites/flower/flower_lunar/flower_stage01.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Flor_Nivel1"
+length = 2.0
+loop = true
+step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flor_spr:texture")
 tracks/0/interp = 1
@@ -21,11 +20,38 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 1 ) ]
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flor_spr:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Flor_spr:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "Flor_Nivel2"
+length = 2.0
+loop = true
+step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flor_spr:texture")
 tracks/0/interp = 1
@@ -37,6 +63,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flor_spr:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Flor_spr:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -53,14 +103,38 @@ tracks/0/keys = {
 "update": 0,
 "values": [ ExtResource( 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flor_spr:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Flor_spr:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [node name="Flor" type="Node2D"]
 position = Vector2( 168, 80 )
 script = ExtResource( 2 )
 
 [node name="Flor_spr" type="Sprite" parent="."]
-material = SubResource( 4 )
 texture = ExtResource( 1 )
+hframes = 4
 
 [node name="Flor_anim" type="AnimationPlayer" parent="."]
 autoplay = "Flor_Nivel1"
