@@ -6,7 +6,11 @@ var target :KinematicBody2D
 
 var velocity :Vector2
 export (int) var speed = 30
+export (int) var life = 3
 var attack :bool = true
+export (float, 0, 1, 0.05) var time = 1.0 # Tempo de stun
+var stun :bool
+signal hitted
 
 func _physics_process(_delta):
 	match state:
@@ -19,14 +23,13 @@ func _perseguindo():
 	if target:
 		if global_position.distance_to(target.global_position) > 100:
 			velocity = global_position.direction_to(target.global_position) * speed
-			$state.set_text("Perseguindo")
 			$timer.stop()
 			attack = true
 		elif attack:
-			$state.set_text("Parando para atirar")
 			velocity = Vector2.ZERO
 			$timer.start(2)
 			attack = false
+	
 	velocity = move_and_slide(velocity)
 
 func _on_area_body_entered(body):
@@ -36,13 +39,28 @@ func _on_area_body_entered(body):
 
 func _on_area_body_exited(_body):
 	$area/shape.shape.radius /= 2
-	$state.set_text("Parado")
 	target = null
 	state = 0
 
 func _on_timer_timeout():
+	if !target or stun:
+		return
 	var bullet = load("res://cenas/traps/bullet.tscn").instance()
 	$pos.look_at(target.global_position + Vector2(0,7))
 	bullet.global_position = $pos.global_position
 	bullet.rotation_degrees = $pos.rotation_degrees
 	get_tree().current_scene.add_child(bullet)
+
+func hit():
+	life = max(life -1, 0)
+	emit_signal("hitted", life)
+	stun = true
+	if !life:
+		death()
+	else:
+		yield(get_tree().create_timer(time) , "timeout")
+		stun = false
+
+func death():
+	queue_free()
+

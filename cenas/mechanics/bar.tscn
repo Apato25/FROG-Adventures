@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/mechanics/bar.gd" type="Script" id=1]
+
+[node name="bar" type="ColorRect"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = -32.0
+margin_top = -46.0
+margin_right = 32.0
+margin_bottom = -40.0
+color = Color( 1, 0, 0, 1 )
+script = ExtResource( 1 )

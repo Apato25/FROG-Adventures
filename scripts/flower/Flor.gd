@@ -26,7 +26,7 @@ func _physics_process(_delta):
 	#teste de cura da vida da flor
 	if current_life == 0:
 		current_life = flor_max_life
-	print(flor_xp)
+#	print(flor_xp)
 
 
 
