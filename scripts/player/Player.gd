@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+var life := 3
 var spd = 100.0
 var player_velo = Vector2.ZERO
 onready var anim := $player_pos2d/animFrog
@@ -11,7 +12,11 @@ var current_state := 0
 var enter_state := true
 enum {parado,andando,atacando}
 
-signal atacando 
+signal atacando
+signal new_life
+
+func _ready():
+	emit_signal("new_life", life)
 
 func _physics_process(_delta):
 	match current_state:
@@ -68,7 +73,7 @@ func _atacando():
 		anim.play("atacando_para_frente")
 		lingua.z_index = 1
 	
-	print(lingua_pos.position.x)
+#	print(lingua_pos.position.x)
 	if lingua_pos.position.x:
 		$player_pos2d.scale.x = -1 if mouse_pos.x < 0 else 1
 		lingua.position.x = -3 if mouse_pos.x < 0 else 3
@@ -131,3 +136,36 @@ func _move(): #aplica velocidade no player o fazendo se mover para a direção i
 
 func _on_cooldown_ataque_timeout():
 		esta_atacando = false
+
+func _on_area_area_entered(_area):
+	hit()
+
+func _on_area_body_entered(_body):
+	hit()
+
+func hit():
+	$area/shape.set_deferred("disabled", true)
+	life = int(max(life-1, 0))
+	if !life:
+		queue_free()
+	emit_signal("new_life", life)
+	new_modulate(3)
+
+func new_modulate(seg:float):
+	var tween = create_tween()
+	var init_seg = seg
+	while seg >=0:
+		tween.tween_property($player_pos2d, "modulate:a", 0.0, 0.25)
+		tween.parallel().tween_property($Lingua, "modulate:a", 0.0, 0.25)
+		tween.tween_property($player_pos2d, "modulate:a", 1.0, 0.25)
+		tween.parallel().tween_property($Lingua, "modulate:a", 1.0, 0.25)
+		seg -= 0.5
+		if seg <= 1.0:
+			while seg >= 0:
+				tween.tween_property($player_pos2d, "modulate:a", 0.0, 0.125)
+				tween.parallel().tween_property($Lingua, "modulate:a", 0.0, 0.125)
+				tween.tween_property($player_pos2d, "modulate:a", 1.0, 0.125)
+				tween.parallel().tween_property($Lingua, "modulate:a", 1.0, 0.125)
+				seg -= 0.25
+	yield(get_tree().create_timer(init_seg), "timeout")
+	$area/shape.set_deferred("disabled", false)

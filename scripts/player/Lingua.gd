@@ -11,7 +11,8 @@ onready var posLingua_ref = $lingua__reflection/pos_lingua
 onready var inipo_refs = $lingua__reflection/pos_inicio
 
 export (int) var reach = 60
-var mouse_pos 
+var mouse_pos
+signal attack
 
 func _physics_process(delta):
 	mouse_pos = get_local_mouse_position()
@@ -20,10 +21,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Attack") == true and Global.can_attack == true:
 		posLingua.position = posLingua.position.linear_interpolate(mouse_pos.limit_length(reach), delta * 20)
 		lingua.set_point_position(1,posLingua.position)
+		emit_signal("attack", true)
 	
 	if Input.is_action_pressed("Attack") == false:
 		posLingua.position = posLingua.position.linear_interpolate(inipos.position, delta * 40)
 		lingua.set_point_position(1,posLingua.position)
+		emit_signal("attack", false)
 	
 	#reflexo da lingua
 	if Input.is_action_pressed("Attack") == true and Global.can_attack == true:
