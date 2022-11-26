@@ -12,9 +12,6 @@
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 6.5, 3.5 )
 
-[sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 7, 4 )
-
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
@@ -48,6 +45,42 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_pos2d/reflection:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_pos2d/reflection:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_pos2d/reflection:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -95,6 +128,42 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_pos2d/reflection:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_pos2d/reflection:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_pos2d/reflection:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "andando_de_frente"
@@ -132,6 +201,42 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_pos2d/reflection:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_pos2d/reflection:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_pos2d/reflection:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -179,6 +284,42 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_pos2d/reflection:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_pos2d/reflection:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_pos2d/reflection:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "atacando_para_baixo"
@@ -213,6 +354,42 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_pos2d/reflection:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_pos2d/reflection:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_pos2d/reflection:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -257,6 +434,42 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 2 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_pos2d/reflection:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_pos2d/reflection:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_pos2d/reflection:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "atacando_para_frente"
@@ -291,6 +504,42 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_pos2d/reflection:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_pos2d/reflection:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_pos2d/reflection:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -338,6 +587,45 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_pos2d/reflection:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_pos2d/reflection:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_pos2d/reflection:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 6, 10 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -346,18 +634,27 @@ script = ExtResource( 1 )
 position = Vector2( 0, 7 )
 shape = SubResource( 5 )
 
-[node name="area" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="shape" type="CollisionShape2D" parent="area"]
-position = Vector2( 0, 7 )
-shape = SubResource( 12 )
-
 [node name="Lingua" parent="." instance=ExtResource( 8 )]
 position = Vector2( 3, -1 )
 
 [node name="player_pos2d" type="Position2D" parent="."]
+
+[node name="reflection" type="Sprite" parent="player_pos2d"]
+modulate = Color( 1, 1, 1, 0.545098 )
+position = Vector2( -63.156, 25.4844 )
+rotation = 3.14159
+z_index = -1
+texture = ExtResource( 3 )
+offset = Vector2( -63.156, 3.51575 )
+hframes = 4
+
+[node name="frogSpr" type="Sprite" parent="player_pos2d"]
+position = Vector2( -63.156, -3.51559 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+texture = ExtResource( 3 )
+offset = Vector2( -63.156, 3.51575 )
+hframes = 4
 
 [node name="animFrog" type="AnimationPlayer" parent="player_pos2d"]
 root_node = NodePath("../..")
@@ -371,22 +668,13 @@ anims/atacando_para_cima = SubResource( 10 )
 anims/atacando_para_frente = SubResource( 11 )
 anims/parado = SubResource( 4 )
 
-[node name="frogSpr" type="Sprite" parent="player_pos2d"]
-position = Vector2( -63.156, -3.51559 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-texture = ExtResource( 3 )
-offset = Vector2( -63.156, 3.51575 )
-hframes = 4
+[node name="area" type="Area2D" parent="player_pos2d"]
+collision_layer = 0
+collision_mask = 2
 
-[node name="reflection" type="Sprite" parent="player_pos2d"]
-modulate = Color( 1, 1, 1, 0.545098 )
-position = Vector2( -63.156, 25.4844 )
-rotation = 3.14159
-z_index = -1
-texture = ExtResource( 3 )
-offset = Vector2( -63.156, 3.51575 )
-hframes = 4
+[node name="shape" type="CollisionShape2D" parent="player_pos2d/area"]
+position = Vector2( 1, 1 )
+shape = SubResource( 12 )
 
 [node name="cooldown_ataque" type="Timer" parent="."]
 wait_time = 0.5
@@ -394,6 +682,6 @@ one_shot = true
 
 [node name="hearth" parent="." instance=ExtResource( 2 )]
 
-[connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]
-[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="area_entered" from="player_pos2d/area" to="." method="_on_area_area_entered"]
+[connection signal="body_entered" from="player_pos2d/area" to="." method="_on_area_body_entered"]
 [connection signal="timeout" from="cooldown_ataque" to="." method="_on_cooldown_ataque_timeout"]

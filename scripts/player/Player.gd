@@ -144,7 +144,7 @@ func _on_area_body_entered(_body):
 	hit()
 
 func hit():
-	$area/shape.set_deferred("disabled", true)
+	$player_pos2d/area/shape.set_deferred("disabled", true)
 	life = int(max(life-1, 0))
 	if !life:
 		queue_free()
@@ -168,4 +168,4 @@ func new_modulate(seg:float):
 				tween.parallel().tween_property($Lingua, "modulate:a", 1.0, 0.125)
 				seg -= 0.25
 	yield(get_tree().create_timer(init_seg), "timeout")
-	$area/shape.set_deferred("disabled", false)
+	$player_pos2d/area/shape.set_deferred("disabled", false)

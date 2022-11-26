@@ -29,7 +29,7 @@ func _perseguindo():
 			velocity = Vector2.ZERO
 			$timer.start(2)
 			attack = false
-	
+		
 	velocity = move_and_slide(velocity)
 
 func _on_area_body_entered(body):
