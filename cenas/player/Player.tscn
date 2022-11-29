@@ -641,7 +641,7 @@ position = Vector2( 3, -1 )
 
 [node name="reflection" type="Sprite" parent="player_pos2d"]
 modulate = Color( 1, 1, 1, 0.545098 )
-position = Vector2( -63.156, 25.4844 )
+position = Vector2( -63.156, 24.4844 )
 rotation = 3.14159
 z_index = -1
 texture = ExtResource( 3 )

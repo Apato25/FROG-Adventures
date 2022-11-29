@@ -71,7 +71,6 @@ position = Vector2( 216, 136 )
 z_index = 1
 
 [node name="distortion" type="ColorRect" parent="."]
-visible = false
 material = SubResource( 14 )
 margin_top = 32.0
 margin_right = 336.0

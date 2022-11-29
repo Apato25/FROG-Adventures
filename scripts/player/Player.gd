@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 var life := 3
 var spd = 100.0
 var player_velo = Vector2.ZERO
