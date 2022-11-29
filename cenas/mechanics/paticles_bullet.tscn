@@ -25,6 +25,9 @@ color = Color( 0.941176, 0.517647, 0.807843, 1 )
 [node name="paticles_bullet" type="Particles2D"]
 position = Vector2( -4, 0 )
 amount = 4
+lifetime = 0.5
+speed_scale = 5.0
 visibility_rect = Rect2( 0, 0, 0, 0 )
+local_coords = false
 process_material = SubResource( 2 )
 texture = ExtResource( 1 )

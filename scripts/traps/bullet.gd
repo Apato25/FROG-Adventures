@@ -16,7 +16,5 @@ func _on_bullet_area_entered(_area):
 func _on_bullet_body_entered(body):
 	queue_free()
 
-
-
 func _on_not_screen_exited():
 	queue_free()

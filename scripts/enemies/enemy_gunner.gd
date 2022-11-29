@@ -17,12 +17,13 @@ signal hitted
 onready var anim = $anim_enemy_gunner
 
 func _physics_process(_delta):
-	print(state)
 	match state:
 		0:
 			pass
 		1:
 			_perseguindo()
+		2:
+			pass
 		
 	if velocity.x:
 		$enemy_spr.scale.x = 1 if velocity.x < 0 else -1
@@ -31,10 +32,11 @@ func _perseguindo():
 	if target:
 		if global_position.distance_to(target.global_position) > 100:
 			anim.play("idle")
-			velocity = global_position.direction_to(target.global_position) * speed
+			velocity = lerp(velocity,global_position.direction_to(target.global_position) * speed,0.1)
 			$timer.stop()
 			attack = true
 		elif attack:
+			velocity = lerp(velocity, Vector2.ZERO, 0.1)
 			anim.play("attack_charge")
 			
 		
@@ -82,8 +84,6 @@ func death():
 	
 	
 	$death_cooldown.start()
-	
-
 	state = 2
 
 
