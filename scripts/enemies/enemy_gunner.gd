@@ -27,6 +27,8 @@ func _physics_process(_delta):
 		
 	if velocity.x:
 		$enemy_spr.scale.x = 1 if velocity.x < 0 else -1
+	if velocity.x:
+		$reflection_spr.scale.x = 1 if velocity.x < 0 else -1
 
 func _perseguindo():
 	if target:
