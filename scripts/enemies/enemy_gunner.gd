@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
-enum {parado, perseguindo}
+var death_particle = preload("res://cenas/mechanics/paticles_death.tscn")
+onready var de_part = $death_particle_pos
+
+enum {parado, perseguindo, morto}
 var state :int
 var target :KinematicBody2D
 
@@ -11,6 +14,7 @@ var attack :bool = true
 export (float, 0, 1, 0.05) var time = 1.0 # Tempo de stun
 var stun :bool
 signal hitted
+onready var anim = $anim_enemy_gunner
 
 func _physics_process(_delta):
 	match state:
@@ -18,18 +22,26 @@ func _physics_process(_delta):
 			pass
 		1:
 			_perseguindo()
+		2:
+			pass
+		
+	if velocity.x:
+		$enemy_spr.scale.x = 1 if velocity.x < 0 else -1
+	if velocity.x:
+		$reflection_spr.scale.x = 1 if velocity.x < 0 else -1
 
 func _perseguindo():
 	if target:
 		if global_position.distance_to(target.global_position) > 100:
-			velocity = global_position.direction_to(target.global_position) * speed
+			anim.play("idle")
+			velocity = lerp(velocity,global_position.direction_to(target.global_position) * speed,0.1)
 			$timer.stop()
 			attack = true
 		elif attack:
-			velocity = Vector2.ZERO
-			$timer.start(2)
-			attack = false
-	
+			velocity = lerp(velocity, Vector2.ZERO, 0.1)
+			anim.play("attack_charge")
+			
+		
 	velocity = move_and_slide(velocity)
 
 func _on_area_body_entered(body):
@@ -62,5 +74,29 @@ func hit():
 		stun = false
 
 func death():
-	queue_free()
+	var particDead = death_particle.instance()
+	particDead.emitting = true
+	particDead.set_position(de_part.get_position())
+	de_part.add_child(particDead)
+	
+	$area.set_deferred("disabled", true)
+	$shape.set_deferred("disabled", true)
+	$enemy_spr.visible = false
+	$reflection_spr.visible = false
+	
+	
+	$death_cooldown.start()
+	state = 2
 
+
+
+
+func _on_anim_enemy_gunner_animation_finished(anim_name):
+	anim.play("attack")
+	velocity = Vector2.ZERO
+	$timer.start(2)
+	attack = false
+
+
+func _on_death_cooldown_timeout():
+	queue_free()

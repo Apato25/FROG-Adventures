@@ -1,11 +1,32 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/player/Lingua.gd" type="Script" id=1]
 [ext_resource path="res://tongue_test.png" type="Texture" id=2]
 [ext_resource path="res://tongue_test2.png" type="Texture" id=3]
 [ext_resource path="res://cenas/player/hitbox.tscn" type="PackedScene" id=5]
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform bool enable_shader = false;
+uniform float WAVINESS = 60.0;
+uniform float WAVE_SPEED = 10.0;
+uniform float WAVE_DAMPING = 1100.0;
+void fragment() {
+    //COLOR = texture(TEXTURE, UV + vec2(sin(WAVINESS * UV.y + (WAVE_SPEED * TIME)) / WAVE_DAMPING, 0));
+    if (enable_shader) {
+        COLOR = texture(TEXTURE, UV + vec2(sin(WAVINESS * UV.y + (WAVE_SPEED * TIME)) / WAVE_DAMPING, 0));
+    } else {
+        COLOR = texture(TEXTURE, UV);
+    }
+}"
+
 [sub_resource type="ShaderMaterial" id=1]
+shader = SubResource( 3 )
+shader_param/enable_shader = true
+shader_param/WAVINESS = 100.0
+shader_param/WAVE_SPEED = 50.0
+shader_param/WAVE_DAMPING = 1100.0
 
 [node name="Lingua" type="Node2D"]
 script = ExtResource( 1 )

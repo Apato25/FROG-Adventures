@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+var death_particle = preload("res://cenas/mechanics/paticles_death.tscn")
+onready var de_part = $death_part_pos
+
 var life := 3
 var spd = 100.0
 var player_velo = Vector2.ZERO
@@ -10,7 +13,7 @@ var esta_atacando := false
 var se_moveu := false
 var current_state := 0
 var enter_state := true
-enum {parado,andando,atacando}
+enum {parado,andando,atacando,morte}
 
 signal atacando
 signal new_life
@@ -26,8 +29,9 @@ func _physics_process(_delta):
 			_andando()
 		atacando:
 			_atacando()
-	
-	
+		morte:
+			_morreu()
+
 
 #-----------------------------------------------
 
@@ -83,6 +87,14 @@ func _atacando():
 	esta_atacando = true
 	_set_state(_check_atacando())
 
+func _morreu():
+
+	$colisaoFrog.set_deferred("disabled", true)
+	$player_pos2d/area.set_deferred("disabled", true)
+	$player_pos2d.visible = false
+	$Lingua.visible = false
+	$hearth.visible = false
+	
 #-----------------------------------------------
 
 func _check_parado():
@@ -92,6 +104,8 @@ func _check_parado():
 	elif Input.is_action_pressed("Attack") == true and esta_atacando == false:
 		new_state = atacando
 		emit_signal("atacando")
+	elif !life:
+		new_state = morte
 	return new_state
 
 func _check_andando():
@@ -101,6 +115,8 @@ func _check_andando():
 	elif Input.is_action_just_pressed("Attack") and esta_atacando == false:
 		new_state = atacando
 		emit_signal("atacando")
+	elif !life:
+		new_state = morte
 	return new_state
 
 func _check_atacando():
@@ -110,8 +126,10 @@ func _check_atacando():
 		lingua.z_index = -1
 		Global.can_attack = false
 		$cooldown_ataque.start()
+	elif !life:
+		new_state = morte
 	return new_state
-	
+
 #-----------------------------------------------
 
 func _set_state(new_state): #seleciona o novo estado do peixe
@@ -144,10 +162,11 @@ func _on_area_body_entered(_body):
 	hit()
 
 func hit():
-	$area/shape.set_deferred("disabled", true)
+	$player_pos2d/area/shape.set_deferred("disabled", true)
 	life = int(max(life-1, 0))
 	if !life:
-		queue_free()
+		death_part()
+		$death_cooldown.start()
 	emit_signal("new_life", life)
 	new_modulate(3)
 
@@ -168,4 +187,13 @@ func new_modulate(seg:float):
 				tween.parallel().tween_property($Lingua, "modulate:a", 1.0, 0.125)
 				seg -= 0.25
 	yield(get_tree().create_timer(init_seg), "timeout")
-	$area/shape.set_deferred("disabled", false)
+	$player_pos2d/area/shape.set_deferred("disabled", false)
+
+func death_part():
+	var particDead = death_particle.instance()
+	particDead.emitting = true
+	particDead.set_position(de_part.get_position())
+	de_part.add_child(particDead)
+
+func _on_death_cooldown_timeout():
+	queue_free()
