@@ -21,8 +21,9 @@ func _ready():
 func _physics_process(_delta):
 	match state:
 		0:
-			pass
+			anim.play("idle")
 		1:
+			anim.play("walk")
 			_perseguindo()
 		2:
 			pass
@@ -42,13 +43,11 @@ func _on_area_body_entered(body):
 	$area/shape.shape.radius *= 1.5
 	target = body
 	state = 1
-	anim.play("walk")
 
 func _on_area_body_exited(_body):
 	$area/shape.shape.radius /= 1.5
 	target = null
 	state = 0
-	anim.play("idle")
 
 
 func hit():

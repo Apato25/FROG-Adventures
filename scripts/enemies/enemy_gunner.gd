@@ -19,7 +19,7 @@ onready var anim = $anim_enemy_gunner
 func _physics_process(_delta):
 	match state:
 		0:
-			pass
+			anim.play("idle")
 		1:
 			_perseguindo()
 		2:
