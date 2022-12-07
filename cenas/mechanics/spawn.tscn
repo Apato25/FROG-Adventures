@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/mechanics/spawn.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ui/aviso:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ui/aviso:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "show"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ui/aviso:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false ]
+}
+
+[node name="spawn" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="horda" type="Label" parent="ui"]
+margin_right = 16.0
+margin_bottom = 14.0
+text = "Horda nº "
+
+[node name="count" type="Label" parent="ui"]
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 30.0
+text = "00"
+
+[node name="aviso" type="Label" parent="ui"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -134.5
+margin_top = -7.0
+margin_right = 134.5
+margin_bottom = 7.0
+text = "Uma nova horda de inimigos se apróxima!"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/show = SubResource( 2 )
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

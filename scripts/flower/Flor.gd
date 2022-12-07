@@ -11,6 +11,9 @@ var flor_xp = 0
 
 var flor_life_update = true
 
+func _enter_tree():
+	Global.flower = self
+
 func _physics_process(_delta):
 	flor_levelup()
 	match flor_state:
@@ -21,7 +24,7 @@ func _physics_process(_delta):
 			flor_max_life = 500
 			anim.play("Flor_Nivel2")
 	
-	current_life -= 0.5 #faz a flor mperder vida
+	current_life -= 0.5 #faz a flor perder vida
 	
 	#teste de cura da vida da flor
 	if current_life == 0:

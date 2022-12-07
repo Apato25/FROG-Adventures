@@ -5,7 +5,7 @@ onready var de_part = $death_particle_pos
 
 enum {parado, perseguindo,morto}
 var state :int
-var target :KinematicBody2D
+var target
 onready var anim = $slugAnim
 
 var velocity :Vector2
@@ -13,42 +13,42 @@ export (int) var speed = 30
 export (int) var life = 3
 export (float, 0, 1, 0.05) var time = 1.0 # Tempo de stun
 var stun :bool
+
+export var size = 1
 signal hitted
+signal died
 
 func _ready():
 	emit_signal("hitted", life)
+	target = Global.flower
+	state = perseguindo
 
 func _physics_process(_delta):
 	match state:
-		0:
-			anim.play("idle")
-		1:
-			anim.play("walk")
+		parado:
+			_parado()
+		perseguindo:
 			_perseguindo()
-		2:
+		morto:
 			pass
 		
 	if velocity.x:
 		$slug_spr.scale.x = -1 if velocity.x < 0 else 1
 	if velocity.x:
 		$reflection_spr.scale.x = -1 if velocity.x < 0 else 1
+	velocity = move_and_slide(velocity)
+
+func _parado():
+	anim.play("idle")
+	velocity = Vector2.ZERO
 
 func _perseguindo():
+	anim.play("walk")
 	velocity = Vector2.ZERO
 	if target and !stun:
 		velocity = global_position.direction_to(target.global_position) * speed
-	velocity = move_and_slide(velocity)
-
-func _on_area_body_entered(body):
-	$area/shape.shape.radius *= 1.5
-	target = body
-	state = 1
-
-func _on_area_body_exited(_body):
-	$area/shape.shape.radius /= 1.5
-	target = null
-	state = 0
-
+	if global_position.distance_to(target.global_position) * scale.x <= 20:
+		state = parado
 
 func hit():
 	life = max(life -1, 0)
@@ -60,21 +60,19 @@ func hit():
 		yield(get_tree().create_timer(time), "timeout")
 		stun = false
 
-
 func death():
 	var particDead = death_particle.instance()
 	particDead.emitting = true
 	particDead.set_position(de_part.get_position())
 	de_part.add_child(particDead)
 	
-	$area.set_deferred("disabled", true)
 	$shape.set_deferred("disabled", true)
 	$slug_spr.visible = false
 	$reflection_spr.visible = false
 	
 	$death_cooldown.start()
-	state = 2
-
+	state = morto
 
 func _on_death_cooldown_timeout():
+	emit_signal("died", size)
 	queue_free()
