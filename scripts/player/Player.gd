@@ -3,6 +3,7 @@ extends KinematicBody2D
 var death_particle = preload("res://cenas/mechanics/paticles_death.tscn")
 onready var de_part = $death_part_pos
 
+var hitted :bool
 var life := 3
 var spd = 100.0
 var player_velo = Vector2.ZERO
@@ -162,17 +163,19 @@ func _on_area_body_entered(_body):
 	hit()
 
 func hit():
+	if hitted:
+		return
+	hitted = true
 	$player_pos2d/area/shape.set_deferred("disabled", true)
 	life = int(max(life-1, 0))
 	if !life:
 		death_part()
 		$death_cooldown.start()
 	emit_signal("new_life", life)
-	new_modulate(3)
+	invunerable(3)
 
-func new_modulate(seg:float):
+func invunerable(seg:float):
 	var tween = create_tween()
-	var init_seg = seg
 	while seg >=0:
 		tween.tween_property($player_pos2d, "modulate:a", 0.0, 0.25)
 		tween.parallel().tween_property($Lingua, "modulate:a", 0.0, 0.25)
@@ -186,7 +189,8 @@ func new_modulate(seg:float):
 				tween.tween_property($player_pos2d, "modulate:a", 1.0, 0.125)
 				tween.parallel().tween_property($Lingua, "modulate:a", 1.0, 0.125)
 				seg -= 0.25
-	yield(get_tree().create_timer(init_seg), "timeout")
+	yield(tween, "finished")
+	hitted = !true
 	$player_pos2d/area/shape.set_deferred("disabled", false)
 
 func death_part():

@@ -13,7 +13,7 @@ func _on_bullet_area_entered(_area):
 #	queue_free()
 	pass
 
-func _on_bullet_body_entered(body):
+func _on_bullet_body_entered(_body):
 	queue_free()
 
 func _on_not_screen_exited():
