@@ -18,15 +18,19 @@ func _ready():
 	attack()
 	$ui/aviso.hide()
 
+func _physics_process(delta):
+	if difficult == 2:
+		$timer.wait_time = 2.5
+	elif difficult == 3:
+		$timer.wait_time = 2
+
 func pre_attack():
 	horda += 1
 	died = 0
 	if horda == 3:
 		difficult += 1
-		$timer.wait_time = 2
 	if horda == 5:
 		difficult += 1
-		$timer.wait_time = 1
 	
 	$anim.play("show")
 	yield($anim, "animation_finished")
