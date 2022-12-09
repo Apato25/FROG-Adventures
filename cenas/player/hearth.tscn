@@ -3,6 +3,7 @@
 [ext_resource path="res://sprites/others/heart.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/hearth.gd" type="Script" id=2]
 
+
 [node name="hearth" type="Node2D"]
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -16.5, -20 )

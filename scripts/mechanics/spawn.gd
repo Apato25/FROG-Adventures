@@ -23,17 +23,19 @@ func pre_attack():
 	died = 0
 	if horda == 3:
 		difficult += 1
+		$timer.wait_time = 2
 	if horda == 5:
 		difficult += 1
+		$timer.wait_time = 1
 	
 	$anim.play("show")
 	yield($anim, "animation_finished")
 	attack()
 
 func attack():
-	$ui/horda.text = "Horda nº "+str(horda+1)
+	$ui/UI_count_horda/horda.text = "Horda "+str(horda+1)
 	size = (horda * 5) + 10
-	$ui/count.text = "0"+str(size) if size < 10 else ""+str(size)
+	$ui/UI_count_horda/count.text = "0"+str(size) if size < 10 else ""+str(size)
 	$ui.show()
 	$timer.start()
 
@@ -59,7 +61,7 @@ func _on_timer_timeout():
 
 	add_child(new_enemy)
 	size -= int(enemies[rng][1]) # Diminui a quantidade de monstro.
-	$ui/count.text = "0"+str(size) if size < 10 else ""+str(size)
+	$ui/UI_count_horda/count.text = "0"+str(size) if size < 10 else ""+str(size)
 
 func death_count(x): # Verifica se todos os inimigos dessa horda morreram.
 	died += x

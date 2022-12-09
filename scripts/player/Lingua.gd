@@ -15,8 +15,8 @@ var mouse_pos
 signal attack
 
 func _physics_process(delta):
+	print(posLingua.position)
 	mouse_pos = get_local_mouse_position()
-	
 	#lingua normal
 	if Input.is_action_pressed("Attack") == true and Global.can_attack == true:
 		posLingua.position = posLingua.position.linear_interpolate(mouse_pos.limit_length(reach), delta * 20)
