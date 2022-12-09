@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://cenas/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://cenas/enemies/slug_giant.tscn" type="PackedScene" id=2]
 [ext_resource path="res://cenas/maps/Map_01.tscn" type="PackedScene" id=4]
 [ext_resource path="res://cenas/mechanics/spawn.tscn" type="PackedScene" id=5]
 [ext_resource path="res://cenas/flower/Flor.tscn" type="PackedScene" id=6]
@@ -54,6 +55,9 @@ script = ExtResource( 10 )
 
 [node name="Map_01" parent="." instance=ExtResource( 4 )]
 
+[node name="slug_giant" parent="." instance=ExtResource( 2 )]
+position = Vector2( 111.377, 120.816 )
+
 [node name="spawn" parent="." instance=ExtResource( 5 )]
 z_index = 1
 enemies = [ [ "res://cenas/enemies/slug.tscn", "1" ], [ "res://cenas/enemies/firefly.tscn", "1" ], [ "res://cenas/enemies/slug_giant.tscn", "2" ] ]
@@ -62,7 +66,7 @@ enemies = [ [ "res://cenas/enemies/slug.tscn", "1" ], [ "res://cenas/enemies/fir
 z_index = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 148, 63 )
+position = Vector2( 168.602, 62.5796 )
 z_index = 1
 
 [node name="distortion" type="ColorRect" parent="."]

@@ -55,10 +55,13 @@ func hit():
 	emit_signal("hitted", life)
 	stun = true
 	if !life:
+		velocity = Vector2()
 		death()
 	else:
+		get_node("slug_spr").modulate = Color(255,255,255)
 		yield(get_tree().create_timer(time), "timeout")
 		stun = false
+		get_node("slug_spr").modulate = Color(1, 1, 1)
 
 func death():
 	var particDead = death_particle.instance()
