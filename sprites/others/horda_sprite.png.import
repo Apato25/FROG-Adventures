@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Frog_andando_de_frente_para_baixo.png-3f3ed7b0c52b8e60c79b459c651eb848.stex"
+path="res://.import/horda_sprite.png-0c6b18259d906626b8de2858e11e1475.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaders/Frog_andando_de_frente_para_baixo.png"
-dest_files=[ "res://.import/Frog_andando_de_frente_para_baixo.png-3f3ed7b0c52b8e60c79b459c651eb848.stex" ]
+source_file="res://sprites/others/horda_sprite.png"
+dest_files=[ "res://.import/horda_sprite.png-0c6b18259d906626b8de2858e11e1475.stex" ]
 
 [params]
 

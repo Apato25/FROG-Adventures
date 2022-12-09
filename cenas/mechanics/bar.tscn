@@ -2,6 +2,7 @@
 
 [ext_resource path="res://scripts/mechanics/bar.gd" type="Script" id=1]
 
+
 [node name="bar" type="ColorRect"]
 modulate = Color( 0.87451, 0.921569, 0.937255, 1 )
 margin_left = -32.0

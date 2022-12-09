@@ -6,7 +6,7 @@
 [ext_resource path="res://sprites/enemies/slug_enemy/slug_walk.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.3635, 14.4771 )
+extents = Vector2( 13.3635, 11.3906 )
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -243,7 +243,7 @@ script = ExtResource( 2 )
 time = 0.15
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2( -2.06303, 3.47301 )
+position = Vector2( -2.06303, 6.5595 )
 shape = SubResource( 1 )
 
 [node name="slugAnim" type="AnimationPlayer" parent="."]

@@ -62,7 +62,7 @@ enemies = [ [ "res://cenas/enemies/slug.tscn", "1" ], [ "res://cenas/enemies/fir
 z_index = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 148, 63 )
+position = Vector2( 168.602, 62.5796 )
 z_index = 1
 
 [node name="distortion" type="ColorRect" parent="."]
