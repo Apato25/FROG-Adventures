@@ -11,8 +11,35 @@ var flor_xp = 0
 
 var flor_life_update = true
 
+var time := 10.0
+
 func _enter_tree():
 	Global.flower = self
+
+func _ready():
+	$ui.hide()
+
+func revive():
+	showing(time)
+
+func showing(x:float):
+	$ui/label.text = (
+		"O player renascerar em: 0"+str(int(x)+1) if x <9
+		else "O player renascerar em: " +str(int(x)+1)
+	)
+	$ui.show()
+	while x > 0:
+		yield(get_tree().create_timer(0.5),"timeout")
+		x -= 0.5
+		$ui/label.text = (
+			"O player renascerar em: 0"+str(int(x)+1) if x <9
+			else "O player renascerar em: " +str(int(x)+1)
+		)
+	$ui.hide()
+	var player = load("res://cenas/player/Player.tscn").instance()
+	player.global_position = global_position
+	get_tree().current_scene.add_child(player)
+	time += 3
 
 func _physics_process(_delta):
 	flor_levelup()
@@ -46,3 +73,6 @@ func flor_receiveXp():
 	if Input.is_action_just_pressed("teste"):
 		flor_xp += 1
 
+func _on_area_area_entered(area):
+	print(area.get_parent())
+	area.get_parent().state = 0

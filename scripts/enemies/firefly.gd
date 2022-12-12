@@ -20,9 +20,14 @@ export var size = 1
 signal hitted
 signal died
 
+export (Color) var color = Color(255,1,1)
+var arr :Array
 
 func _ready():
 	target = Global.flower
+	modulate = color
+	for h in $cannons.get_children():
+		arr.append(h.rotation_degrees)
 
 func _physics_process(_delta):
 	match state:
@@ -60,12 +65,19 @@ func _on_area_body_exited(_body):
 func _on_timer_timeout():
 	if !target or stun:
 		return
-	var bullet = load("res://cenas/traps/bullet.tscn").instance()
-	var new_target = Vector2(0,21) if target == Global.flower else Vector2(0,7)
-	$pos.look_at(target.global_position + new_target)
-	bullet.global_position = $pos.global_position
-	bullet.rotation_degrees = $pos.rotation_degrees
-	get_tree().current_scene.add_child(bullet)
+	
+	var new_target = Vector2(0,-4) if target == Global.flower else Vector2(0,7)
+	var rot = 0
+	for h in $cannons.get_children():
+		var bullet = load("res://cenas/traps/bullet.tscn").instance()
+		h.look_at(target.global_position + new_target)
+		h.rotation_degrees += arr[rot]
+		
+		bullet.global_position = h.global_position
+		bullet.rotation_degrees = h.rotation_degrees
+		
+		rot +=1
+		get_tree().current_scene.add_child(bullet)
 
 func hit():
 	life = max(life -1, 0)
@@ -78,7 +90,7 @@ func hit():
 		get_node("enemy_spr").modulate = Color(255,255,255)
 		yield(get_tree().create_timer(time) , "timeout")
 		stun = false
-		get_node("enemy_spr").modulate = Color(1, 1, 1)
+		get_node("enemy_spr").modulate = color
 
 func death():
 	var particDead = death_particle.instance()

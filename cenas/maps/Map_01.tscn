@@ -66,7 +66,7 @@ texture = SubResource( 4 )
 
 [node name="mapLimit" type="StaticBody2D" parent="background"]
 visible = false
-collision_layer = 8
+collision_layer = 32
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background/mapLimit"]
 polygon = PoolVector2Array( -1, 53, 0, 0, 336, 0, 336, 46, 284, 31, 186, 30, 153, 36, 148, 29, 74, 29, 24, 44, 6, 53 )
