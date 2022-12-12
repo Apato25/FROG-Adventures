@@ -3,7 +3,7 @@ extends KinematicBody2D
 var death_particle = preload("res://cenas/mechanics/paticles_death.tscn")
 onready var de_part = $death_part_pos
 
-var hitted :bool
+var hitted := true
 var life := 3
 var spd = 100.0
 var player_velo = Vector2.ZERO
@@ -18,9 +18,12 @@ enum {parado,andando,atacando,morte}
 
 signal atacando
 signal new_life
+signal died
 
 func _ready():
+	invunerable(3)
 	emit_signal("new_life", life)
+	return connect("died", Global.flower, "revive")
 
 func _physics_process(_delta):
 	match current_state:
@@ -166,7 +169,6 @@ func hit():
 	if hitted:
 		return
 	hitted = true
-	$player_pos2d/area/shape.set_deferred("disabled", true)
 	life = int(max(life-1, 0))
 	if !life:
 		death_part()
@@ -175,6 +177,7 @@ func hit():
 	invunerable(3)
 
 func invunerable(seg:float):
+	$player_pos2d/area/shape.set_deferred("disabled", true)
 	var tween = create_tween()
 	while seg >=0:
 		tween.tween_property($player_pos2d, "modulate:a", 0.0, 0.25)
@@ -200,4 +203,5 @@ func death_part():
 	de_part.add_child(particDead)
 
 func _on_death_cooldown_timeout():
+	emit_signal("died")
 	queue_free()

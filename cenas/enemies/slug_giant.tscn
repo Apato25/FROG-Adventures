@@ -239,12 +239,14 @@ tracks/5/keys = {
 
 [node name="slug_giant" type="KinematicBody2D"]
 scale = Vector2( 1.5, 1.5 )
-collision_layer = 2
+collision_layer = 8
+collision_mask = 5
 script = ExtResource( 2 )
 speed = 20
 life = 10
 time = 0.05
 size = 2
+color = Color( 1, 1, 1, 1 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2( -2.06303, 6.44174 )

@@ -18,9 +18,11 @@ export var size = 1
 signal hitted
 signal died
 
+export (Color) var color = Color(255,1,1)
+
 func _ready():
 	emit_signal("hitted", life)
-	target = Global.flower
+	target = Global.flower.get_node("area")
 	state = perseguindo
 
 func _physics_process(_delta):
@@ -36,7 +38,7 @@ func _physics_process(_delta):
 		$slug_spr.scale.x = -1 if velocity.x < 0 else 1
 	if velocity.x:
 		$reflection_spr.scale.x = -1 if velocity.x < 0 else 1
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity * speed)
 
 func _parado():
 	anim.play("idle")
@@ -46,9 +48,9 @@ func _perseguindo():
 	anim.play("walk")
 	velocity = Vector2.ZERO
 	if target and !stun:
-		velocity = global_position.direction_to(target.global_position) * speed
-	if global_position.distance_to(target.global_position) * scale.x <= 20:
-		state = parado
+		velocity = global_position.direction_to(target.global_position-Vector2(0,15))
+#	if global_position.distance_to(target.global_position) * scale.x <= 20:
+#		state = parado
 
 func hit():
 	life = max(life -1, 0)
@@ -58,10 +60,10 @@ func hit():
 		velocity = Vector2()
 		death()
 	else:
-		get_node("slug_spr").modulate = Color(255,255,255)
+		get_node("slug_spr").modulate = Color(255, 255, 255)
 		yield(get_tree().create_timer(time), "timeout")
 		stun = false
-		get_node("slug_spr").modulate = Color(1, 1, 1)
+		get_node("slug_spr").modulate = color
 
 func death():
 	var particDead = death_particle.instance()
