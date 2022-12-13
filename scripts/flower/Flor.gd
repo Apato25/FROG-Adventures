@@ -2,16 +2,20 @@ extends Node2D
 
 onready var anim = $Flor_anim
 
+var body_count = 0
+var area_count = 0
+var is_attacked = false
+
+var time := 5.0
+
 var flor_state
 enum {Flor_0,Flor_1}
 
 var flor_max_life = 0
-var current_life = 250
+var current_life = 500
 var flor_xp = 0
 
 var flor_life_update = true
-
-var time := 10.0
 
 func _enter_tree():
 	Global.flower = self
@@ -41,20 +45,31 @@ func showing(x:float):
 	get_tree().current_scene.add_child(player)
 	time += 3
 
+
 func _physics_process(_delta):
 	flor_levelup()
 	match flor_state:
 		Flor_0:
-			flor_max_life = 250
+			flor_max_life = 500
 			anim.play("Flor_Nivel1")
 		Flor_1:
-			flor_max_life = 500
+			flor_max_life = 750
 			anim.play("Flor_Nivel2")
 	
-	current_life -= 0.5 #faz a flor perder vida
+	if body_count == 0 and area_count == 0:
+		is_attacked = false
+	else:
+		is_attacked = true
 	
+	 #faz a flor perder vida
+	if is_attacked:
+		current_life -= body_count + area_count
+		#yield(get_tree().create_timer(0.5), "timeout")
+	else:
+		current_life = current_life
+		
 	#teste de cura da vida da flor
-	if current_life == 0:
+	if current_life <= 0:
 		current_life = flor_max_life
 #	print(flor_xp)
 
@@ -73,6 +88,22 @@ func flor_receiveXp():
 	if Input.is_action_just_pressed("teste"):
 		flor_xp += 1
 
-func _on_area_area_entered(area):
-	print(area.get_parent())
-	area.get_parent().state = 0
+
+
+
+func _on_flower_area_area_entered(area):
+	if area.name == "bullet":
+		area_count += 1
+
+func _on_flower_area_area_exited(area):
+	if area.name == "bullet":
+		area_count -= 1
+
+
+func _on_flower_area_body_entered(body):
+	body_count += 0.2
+
+func _on_area_body_exited(_body):
+	body_count -= 0.2
+
+

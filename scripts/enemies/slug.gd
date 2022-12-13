@@ -22,7 +22,7 @@ export (Color) var color = Color(255,1,1)
 
 func _ready():
 	emit_signal("hitted", life)
-	target = Global.flower.get_node("area")
+	target = Global.flower.get_node("flower_area")
 	state = perseguindo
 
 func _physics_process(_delta):
@@ -74,10 +74,15 @@ func death():
 	$shape.set_deferred("disabled", true)
 	$slug_spr.visible = false
 	$reflection_spr.visible = false
-	
+	$area.visible = false
 	$death_cooldown.start()
 	state = morto
 
 func _on_death_cooldown_timeout():
 	emit_signal("died", size)
 	queue_free()
+
+
+func _on_area_area_entered(area):
+	if area.name == "flower_area":
+		state = parado

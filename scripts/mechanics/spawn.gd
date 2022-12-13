@@ -16,7 +16,7 @@ var enemies_death :int
 
 func _ready():
 	randomize()
-#	attack()
+	attack()
 	$ui/aviso.hide()
 
 func _physics_process(_delta):

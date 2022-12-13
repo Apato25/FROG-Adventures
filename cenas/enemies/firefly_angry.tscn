@@ -417,12 +417,11 @@ radius = 150.0
 collision_layer = 8
 collision_mask = 5
 script = ExtResource( 1 )
-speed = 50
-life = 2
+speed = 70
 time = 0.15
-size = 2
 
 [node name="cannons" type="Node2D" parent="."]
+modulate = Color( 1, 0, 0, 1 )
 
 [node name="pos" type="Position2D" parent="cannons"]
 position = Vector2( -2, -9 )
@@ -449,6 +448,7 @@ anims/idle = SubResource( 4 )
 
 [node name="enemy_spr" type="Sprite" parent="."]
 position = Vector2( 0, -2 )
+z_index = 1
 texture = ExtResource( 5 )
 hframes = 6
 

@@ -440,6 +440,7 @@ anims/idle = SubResource( 4 )
 
 [node name="enemy_spr" type="Sprite" parent="."]
 position = Vector2( 0, -2 )
+z_index = 1
 texture = ExtResource( 1 )
 hframes = 6
 

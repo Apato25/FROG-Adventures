@@ -140,12 +140,12 @@ font_data = ExtResource( 5 )
 position = Vector2( 168, 105 )
 script = ExtResource( 2 )
 
-[node name="area" type="Area2D" parent="."]
+[node name="flower_area" type="Area2D" parent="."]
 position = Vector2( 0, -1.5 )
 collision_layer = 4
-collision_mask = 8
+collision_mask = 24
 
-[node name="shape" type="CollisionShape2D" parent="area"]
+[node name="shape" type="CollisionShape2D" parent="flower_area"]
 position = Vector2( 0, 1.5 )
 rotation = 1.5708
 shape = SubResource( 6 )
@@ -174,5 +174,7 @@ margin_right = 87.0
 custom_fonts/font = SubResource( 5 )
 text = "O player renascerar em: "
 
-[connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]
-[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="area_entered" from="flower_area" to="." method="_on_flower_area_area_entered"]
+[connection signal="area_exited" from="flower_area" to="." method="_on_flower_area_area_exited"]
+[connection signal="body_entered" from="flower_area" to="." method="_on_flower_area_body_entered"]
+[connection signal="body_exited" from="flower_area" to="." method="_on_area_body_exited"]

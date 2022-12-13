@@ -6,7 +6,7 @@
 [ext_resource path="res://sprites/enemies/slug_enemy/slug_walk.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14, 11 )
+extents = Vector2( 11, 11 )
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -237,8 +237,7 @@ tracks/5/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 10, 8.5 )
+[sub_resource type="CircleShape2D" id=6]
 
 [node name="slug" type="KinematicBody2D"]
 collision_layer = 8
@@ -248,7 +247,7 @@ time = 0.15
 color = Color( 1, 1, 1, 1 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2( -2.06303, 6.5595 )
+position = Vector2( -2, 6.5595 )
 shape = SubResource( 1 )
 
 [node name="slugAnim" type="AnimationPlayer" parent="."]
@@ -257,6 +256,7 @@ anims/idle = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="slug_spr" type="Sprite" parent="."]
+z_index = 1
 texture = ExtResource( 1 )
 hframes = 6
 
@@ -278,11 +278,11 @@ one_shot = true
 
 [node name="area" type="Area2D" parent="."]
 position = Vector2( -2, 7 )
-collision_layer = 0
+collision_layer = 8
 collision_mask = 4
 
 [node name="shape" type="CollisionShape2D" parent="area"]
-position = Vector2( 0, -1.5 )
 shape = SubResource( 6 )
 
 [connection signal="timeout" from="death_cooldown" to="." method="_on_death_cooldown_timeout"]
+[connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]

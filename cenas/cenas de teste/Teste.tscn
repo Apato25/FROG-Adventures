@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://cenas/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://cenas/enemies/slug.tscn" type="PackedScene" id=2]
+[ext_resource path="res://cenas/enemies/firefly.tscn" type="PackedScene" id=3]
 [ext_resource path="res://cenas/maps/Map_01.tscn" type="PackedScene" id=4]
 [ext_resource path="res://cenas/mechanics/spawn.tscn" type="PackedScene" id=5]
 [ext_resource path="res://cenas/flower/Flor.tscn" type="PackedScene" id=6]
@@ -9,6 +9,7 @@
 [ext_resource path="res://sprites/flower/Lifebar_progress.png" type="Texture" id=8]
 [ext_resource path="res://sprites/flower/Lifebar_over.png" type="Texture" id=9]
 [ext_resource path="res://scripts/flower/Controle_flor.gd" type="Script" id=10]
+[ext_resource path="res://cenas/enemies/firefly_angry.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
@@ -65,18 +66,16 @@ z_index = 1
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 168.602, 62.5796 )
 
-[node name="slug" parent="." instance=ExtResource( 2 )]
-position = Vector2( 172, 143 )
-z_index = 1
-
-[node name="slug2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 210, 49 )
-z_index = 1
-
 [node name="distortion" type="ColorRect" parent="."]
 material = SubResource( 14 )
 margin_top = 32.0
 margin_right = 336.0
 margin_bottom = 189.0
+
+[node name="firefly_angry" parent="." instance=ExtResource( 11 )]
+position = Vector2( 110.757, 165.535 )
+
+[node name="firefly" parent="." instance=ExtResource( 3 )]
+position = Vector2( 221.082, 155.216 )
 
 [editable path="spawn"]
