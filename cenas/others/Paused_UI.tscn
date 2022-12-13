@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Global_scripts/Paused_UI.gd" type="Script" id=1]
 [ext_resource path="res://sprites/others/Screen_pause.png" type="Texture" id=2]
 [ext_resource path="res://fonts/font_pixel.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment() {
+    float alpha = texture(TEXTURE, UV).a;
+    COLOR.a = step(0.5, alpha);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 
 [node name="Paused_UI" type="CanvasLayer"]
 pause_mode = 2
@@ -19,7 +30,8 @@ anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="Button" type="Button" parent="."]
+[node name="continue_bt" type="Button" parent="."]
+material = SubResource( 2 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -33,4 +45,19 @@ custom_fonts/font = ExtResource( 3 )
 text = "continue"
 flat = true
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="mainmenu_bt" type="Button" parent="."]
+material = SubResource( 2 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.0
+margin_top = 6.0
+margin_right = 34.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 3 )
+text = "quit"
+flat = true
+
+[connection signal="pressed" from="continue_bt" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="mainmenu_bt" to="." method="_on_mainmenu_bt_pressed"]

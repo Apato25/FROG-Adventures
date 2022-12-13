@@ -1,6 +1,4 @@
 extends CanvasLayer
-
-
 func _ready():
 	set_visible(false)
 
@@ -17,3 +15,8 @@ func _on_Button_pressed():
 func set_visible(is_visible):
 	for node in get_children():
 		node.visible = is_visible
+
+
+func _on_mainmenu_bt_pressed():
+		get_tree().paused = false
+		get_tree().change_scene("res://cenas/others/title_menu.tscn")

@@ -21,13 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Frog Adventures"
-run/main_scene="res://cenas/cenas de teste/Teste.tscn"
+run/main_scene="res://cenas/others/title_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://scripts/Global_scripts/global.gd"
-PausedUi="*res://cenas/others/Paused_UI.tscn"
 
 [display]
 
