@@ -71,10 +71,10 @@ func death():
 	particDead.set_position(de_part.get_position())
 	de_part.add_child(particDead)
 	
+	$area/shape.set_deferred("disabled", true)
 	$shape.set_deferred("disabled", true)
 	$slug_spr.visible = false
 	$reflection_spr.visible = false
-	$area.visible = false
 	$death_cooldown.start()
 	state = morto
 

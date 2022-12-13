@@ -70,7 +70,8 @@ func _physics_process(_delta):
 		
 	#teste de cura da vida da flor
 	if current_life <= 0:
-		current_life = flor_max_life
+		get_tree().change_scene("res://cenas/others/title_menu.tscn")
+		#current_life = flor_max_life
 #	print(flor_xp)
 
 
@@ -100,7 +101,7 @@ func _on_flower_area_area_exited(area):
 		area_count -= 1
 
 
-func _on_flower_area_body_entered(body):
+func _on_flower_area_body_entered(_body):
 	body_count += 0.2
 
 func _on_area_body_exited(_body):
