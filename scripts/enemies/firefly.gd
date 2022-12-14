@@ -12,7 +12,7 @@ var target
 var velocity :Vector2
 export (int) var speed = 30
 export (int) var life = 3
-var attack :bool = true
+var attack := true
 export (float, 0, 1, 0.05) var time = 1.0 # Tempo de stun
 var stun :bool
 
@@ -20,7 +20,7 @@ export var size = 1
 signal hitted
 signal died
 
-export (Color) var color = Color(255,1,1)
+export (Color) var color = Color(255,255,255)
 var arr :Array
 
 func _ready():
@@ -38,6 +38,8 @@ func _physics_process(_delta):
 		
 	if velocity.x:
 		$enemy_spr.scale.x = 1 if velocity.x < 0 else -1
+	elif target:
+		$enemy_spr.scale.x = 1 if target.global_position.x < global_position.x else -1
 	if velocity.x:
 		$reflection_spr.scale.x = 1 if velocity.x < 0 else -1
 
@@ -98,6 +100,8 @@ func death():
 	particDead.set_position(de_part.get_position())
 	de_part.add_child(particDead)
 	
+	emit_signal("died", size)
+	$timer.stop()
 	$area.set_deferred("disabled", true)
 	$shape.set_deferred("disabled", true)
 	$enemy_spr.visible = false
@@ -113,5 +117,4 @@ func _on_anim_enemy_gunner_animation_finished(_anim_name):
 	attack = false
 
 func _on_death_cooldown_timeout():
-	emit_signal("died", size)
 	queue_free()

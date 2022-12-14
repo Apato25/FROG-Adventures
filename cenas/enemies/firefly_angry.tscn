@@ -420,6 +420,8 @@ script = ExtResource( 1 )
 speed = 70
 life = 4
 time = 0.15
+size = 2
+color = Color( 255, 1, 1, 1 )
 
 [node name="cannons" type="Node2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )

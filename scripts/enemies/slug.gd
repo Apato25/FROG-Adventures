@@ -18,11 +18,9 @@ export var size = 1
 signal hitted
 signal died
 
-export (Color) var color = Color(255,1,1)
-
 func _ready():
 	emit_signal("hitted", life)
-	target = Global.flower.get_node("flower_area")
+	target = Global.flower.get_node("flower_area") if Global.flower else null
 	state = perseguindo
 
 func _physics_process(_delta):
@@ -49,8 +47,6 @@ func _perseguindo():
 	velocity = Vector2.ZERO
 	if target and !stun:
 		velocity = global_position.direction_to(target.global_position-Vector2(0,15))
-#	if global_position.distance_to(target.global_position) * scale.x <= 20:
-#		state = parado
 
 func hit():
 	life = max(life -1, 0)
@@ -63,7 +59,7 @@ func hit():
 		get_node("slug_spr").modulate = Color(255, 255, 255)
 		yield(get_tree().create_timer(time), "timeout")
 		stun = false
-		get_node("slug_spr").modulate = color
+		get_node("slug_spr").modulate = Color(1,1,1)
 
 func death():
 	var particDead = death_particle.instance()
@@ -71,6 +67,7 @@ func death():
 	particDead.set_position(de_part.get_position())
 	de_part.add_child(particDead)
 	
+	emit_signal("died", size)
 	$area/shape.set_deferred("disabled", true)
 	$shape.set_deferred("disabled", true)
 	$slug_spr.visible = false
@@ -79,7 +76,6 @@ func death():
 	state = morto
 
 func _on_death_cooldown_timeout():
-	emit_signal("died", size)
 	queue_free()
 
 

@@ -1,7 +1,8 @@
 extends Node2D
 
 export (Array, Array, String) var enemies
-
+var minutes = 0
+var seconds = 0
 # A array armazena uma quantidade de arrays filhos, sendo esses filhos os dados do inimigos.
 # Os dados armazenados nesses arrays filhos são do tipo String e serão:
 # Índice  nº0 seu nodepath e o índice nº1 espaço de tropa na horda.
@@ -13,17 +14,26 @@ var limit :int
 var size :int
 var died :int
 var enemies_death :int
+var meta :int
+var text := ["",""]
+
+signal flower_xp
+signal dead_horde
+
 
 func _ready():
 	randomize()
-	attack()
 	$ui/aviso.hide()
-
-func _physics_process(_delta):
-	if Input.is_action_just_pressed("teste"):
-		death_count(((horda-1) * 5) + 10)
+	
+	var _conect = connect("flower_xp", Global.flower, "xp_gain")
+	_conect = connect("dead_horde", Global.flower, "bonus")
+	
+	yield(get_tree().create_timer(2), "timeout")
+	attack()
 
 func pre_attack():
+	emit_signal("flower_xp", true)
+	emit_signal("dead_horde", horda)
 	horda += 1
 	died = 0
 	if horda == 3:
@@ -43,12 +53,16 @@ func pre_attack():
 func attack():
 	$ui/UI_count_horda/horda.text = "Horda "+str(horda)
 	size = ((horda-1) * 5) + 10
+	meta += size
+	
+	printer()
 	$ui.show()
 	$timer.start()
 
 func _on_timer_timeout():
 	if !size:
 		$timer.stop()
+		emit_signal("flower_xp", false)
 		return
 	
 	var rng = randi() % difficult
@@ -72,7 +86,7 @@ func _on_timer_timeout():
 func death_count(x):
 	died += x
 	enemies_death += x
-	$ui/UI_count_horda/count.text = "0"+str(enemies_death) if enemies_death < 10 else ""+str(enemies_death)
+	printer()
 	if died < ((horda-1) * 5) + 10:
 		return
 	if horda < 9:
@@ -80,7 +94,18 @@ func death_count(x):
 	else:
 		winner()
 
+func printer():
+	text = [
+		"0"+str(enemies_death) if enemies_death < 10 else "" + str(enemies_death),
+		"0"+str(meta) if meta < 10 else "" + str(meta)
+	]
+	$ui/UI_count_horda/count.text = text[0] +" / " + text[1]
+
 func winner():
 	$ui/aviso.set_text("Para...Béns...!!!")
 	$ui/aviso.rect_position = Vector2(111,88)
 	$ui/aviso.show()
+	$Timer.stop()
+	print("Horda nº ", horda," / ",minutes," minuto(s) ", "e ", seconds," segundo(s).")
+
+

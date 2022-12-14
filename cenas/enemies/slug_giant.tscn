@@ -249,7 +249,6 @@ speed = 20
 life = 6
 time = 0.05
 size = 2
-color = Color( 1, 1, 1, 1 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2( -2.06303, 6.44174 )
