@@ -21,7 +21,8 @@ func new_text(words:String):
 	
 	for i in arr.size():
 		text += arr[i]
-		rect_position.x = 165 - (i) * 3 
+		rect_position.x = 165 - (i) * 3
+		Global.new_song(load("res://songs/sfx/GB Sound Assets/Hitsound 1.mp3"))
 		yield(get_tree().create_timer(0.05), "timeout")
 
 func timer(time:float = 3.0):

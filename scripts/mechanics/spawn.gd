@@ -1,12 +1,6 @@
 extends Node2D
 
 export (Array, Array, String) var enemies
-var minutes = 0
-var seconds = 0
-# A array armazena uma quantidade de arrays filhos, sendo esses filhos os dados do inimigos.
-# Os dados armazenados nesses arrays filhos são do tipo String e serão:
-# Índice  nº0 seu nodepath e o índice nº1 espaço de tropa na horda.
-# Ex: [res://cenas/enemies/miniboss.tscn, 5].
 
 var difficult := 1
 var horda := 1
@@ -53,8 +47,8 @@ func pre_attack():
 func attack():
 	$ui/UI_count_horda/horda.text = "Horda "+str(horda)
 	size = ((horda-1) * 5) + 10
+	size += 25 if horda == 10 else 0
 	meta += size
-	
 	printer()
 	$ui.show()
 	$timer.start()
@@ -89,7 +83,7 @@ func death_count(x):
 	printer()
 	if died < ((horda-1) * 5) + 10:
 		return
-	if horda < 9:
+	if horda < 10:
 		pre_attack()
 	else:
 		winner()
@@ -105,7 +99,3 @@ func winner():
 	$ui/aviso.set_text("Para...Béns...!!!")
 	$ui/aviso.rect_position = Vector2(111,88)
 	$ui/aviso.show()
-	$Timer.stop()
-	print("Horda nº ", horda," / ",minutes," minuto(s) ", "e ", seconds," segundo(s).")
-
-

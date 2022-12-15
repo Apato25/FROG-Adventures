@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drop.mp3-41bf33964b45146d3adc15711fef54be.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/GB Sound Assets/Drop.mp3"
+dest_files=[ "res://.import/Drop.mp3-41bf33964b45146d3adc15711fef54be.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

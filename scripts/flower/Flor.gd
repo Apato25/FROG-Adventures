@@ -21,7 +21,6 @@ var flor_xp = 0
 var flor_level := 1
 var can_xp :bool
 
-
 func _enter_tree():
 	Global.flower = self
 
@@ -52,6 +51,7 @@ func showing(x:float):
 	var player = load("res://cenas/player/Player.tscn").instance()
 	player.global_position = global_position
 	get_tree().current_scene.add_child(player)
+	Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Select.mp3"))
 	time += 2
 
 
@@ -71,47 +71,40 @@ func _physics_process(delta):
 	else:
 		is_attacked = true
 	
-	 #faz a flor perder vida
+	
 	if is_attacked:
 		current_life -= body_count + area_count
-		#yield(get_tree().create_timer(0.5), "timeout")
-#	else:
-#		current_life = current_life
-		
-	#teste de cura da vida da flor
+	
 	if current_life <= 0:
 		return get_tree().change_scene("res://cenas/others/title_menu.tscn")
-		#current_life = flor_max_life
-#	print(flor_xp)
-
 
 func flor_receiveXp(delta):
-	if flor_level == 5:
-		can_xp = false
-		flor_xp = 250
-		print("Level Máximo!")
-		return
+#	if flor_level == 5:
+#		can_xp = false
+#		flor_xp = 250
+#		print("Level Máximo!")
+#		return
 	
 	var xp = flor_level
 	flor_xp += delta * int(!is_attacked)
 	flor_level = (
-		5 if flor_xp >= 250
-		else 4 if flor_xp >= 130
-		else 3 if flor_xp >= 65
-		else 2 if flor_xp >= 35
+		5 if flor_xp >= 700
+		else 4 if flor_xp >= 400
+		else 3 if flor_xp >= 200
+		else 2 if flor_xp >= 50
 		else 1
 	) 
 	var max_xp = (
-		250 if flor_level == 4
-		else 130 if flor_level == 3
-		else 65 if flor_level == 2
-		else 35
+		700 if flor_level >= 4
+		else 400 if flor_level == 3
+		else 200 if flor_level == 2
+		else 50
 	)
 	
 	print("XP: ", int(flor_xp),"/",max_xp, " / ", "Level: ", flor_level)
 	
-	
 	if xp != flor_level:
+		Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Select 2.mp3"))
 		flor_state = 1 if flor_level >= 2 else 0
 		heal(250)
 		text.new_text("Subi de nivel!")
@@ -129,7 +122,6 @@ func bonus(x:int):
 func heal(x:int):
 	current_life += x
 	old_life += x
-
 
 func _on_flower_area_area_entered(area):
 	if area.name == "bullet":

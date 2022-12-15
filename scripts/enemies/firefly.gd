@@ -13,10 +13,10 @@ var velocity :Vector2
 export (int) var speed = 30
 export (int) var life = 3
 var attack := true
-export (float, 0, 1, 0.05) var time = 1.0 # Tempo de stun
+export (float, 0, 0.5, 0.05) var time = 0.5
 var stun :bool
 
-export var size = 1
+export (int) var size = 1
 signal hitted
 signal died
 
@@ -80,15 +80,18 @@ func _on_timer_timeout():
 		
 		rot +=1
 		get_tree().current_scene.add_child(bullet)
+	Global.new_song(load("res://songs/sfx/GB Sound Assets/Power Hit.mp3"))
 
 func hit():
 	life = max(life -1, 0)
 	emit_signal("hitted", life)
 	stun = true
 	if !life:
+		Global.new_song(load("res://songs/sfx/GB Sound Assets/Item Get.mp3"))
 		velocity = Vector2()
 		death()
 	else:
+		Global.new_song(load("res://songs/sfx/GB Sound Assets/Charge 3.mp3"))
 		get_node("enemy_spr").modulate = Color(255,255,255)
 		yield(get_tree().create_timer(time) , "timeout")
 		stun = false

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Charge 2.mp3-7144019e9cf6fbf30fe6b3dcde4dc2b2.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/GB Sound Assets/Charge 2.mp3"
+dest_files=[ "res://.import/Charge 2.mp3-7144019e9cf6fbf30fe6b3dcde4dc2b2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

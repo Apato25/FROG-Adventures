@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Swing Hollow.mp3-793ea3a8ff10f89d842ad9e170c53af5.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/GB Sound Assets/Swing Hollow.mp3"
+dest_files=[ "res://.import/Swing Hollow.mp3-793ea3a8ff10f89d842ad9e170c53af5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

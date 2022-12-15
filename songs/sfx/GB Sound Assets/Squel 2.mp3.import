@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Squel 2.mp3-29fd0bbae7d3b879e376a6fe56f6b99c.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/GB Sound Assets/Squel 2.mp3"
+dest_files=[ "res://.import/Squel 2.mp3-29fd0bbae7d3b879e376a6fe56f6b99c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
