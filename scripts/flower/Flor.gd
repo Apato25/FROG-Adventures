@@ -88,14 +88,14 @@ func flor_receiveXp(delta):
 	var xp = flor_level
 	flor_xp += delta * int(!is_attacked)
 	flor_level = (
-		5 if flor_xp >= 700
+		5 if flor_xp >= 650
 		else 4 if flor_xp >= 400
 		else 3 if flor_xp >= 200
 		else 2 if flor_xp >= 50
 		else 1
 	) 
 	var max_xp = (
-		700 if flor_level >= 4
+		650 if flor_level >= 4
 		else 400 if flor_level == 3
 		else 200 if flor_level == 2
 		else 50
