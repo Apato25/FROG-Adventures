@@ -71,11 +71,10 @@ func _physics_process(delta):
 	else:
 		is_attacked = true
 	
-	 #faz a flor perder vida
+	
 	if is_attacked:
 		current_life -= body_count + area_count
-
-#	print(current_life)
+	
 	if current_life <= 0:
 		return get_tree().change_scene("res://cenas/others/title_menu.tscn")
 

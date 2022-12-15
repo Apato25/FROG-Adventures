@@ -1,12 +1,6 @@
 extends Node2D
 
 export (Array, Array, String) var enemies
-var minutes = 0
-var seconds = 0
-# A array armazena uma quantidade de arrays filhos, sendo esses filhos os dados do inimigos.
-# Os dados armazenados nesses arrays filhos são do tipo String e serão:
-# Índice  nº0 seu nodepath e o índice nº1 espaço de tropa na horda.
-# Ex: [res://cenas/enemies/miniboss.tscn, 5].
 
 var difficult := 1
 var horda := 1
@@ -105,4 +99,3 @@ func winner():
 	$ui/aviso.set_text("Para...Béns...!!!")
 	$ui/aviso.rect_position = Vector2(111,88)
 	$ui/aviso.show()
-	print("Horda nº ", horda," / ",minutes," minuto(s) ", "e ", seconds," segundo(s).")

@@ -41,5 +41,3 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Attack") == false:
 		posLingua_ref.position = posLingua_ref.position.linear_interpolate(inipo_refs.position, delta * 40)
 		lingua_ref.set_point_position(1,posLingua_ref.position)
-
-

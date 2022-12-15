@@ -13,7 +13,7 @@ var velocity :Vector2
 export (int) var speed = 30
 export (int) var life = 3
 var attack := true
-export (float, 0, 0.5, 0.05) var time = 0.5 # Tempo de stun
+export (float, 0, 0.5, 0.05) var time = 0.5
 var stun :bool
 
 export (int) var size = 1
