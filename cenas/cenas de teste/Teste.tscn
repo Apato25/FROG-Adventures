@@ -75,10 +75,12 @@ margin_right = 336.0
 margin_bottom = 189.0
 
 [node name="Paused_UI" parent="." instance=ExtResource( 2 )]
+layer = 3
 
 [node name="transition" parent="." instance=ExtResource( 3 )]
 layer = 2
 
 [node name="audio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
 
 [editable path="spawn"]

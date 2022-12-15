@@ -4,7 +4,8 @@ var flower :Node2D
 var can_attack
 
 func new_song(song:AudioStreamMP3):
-	var audio = AudioStreamPlayer2D.new()
+	var audio = AudioStreamPlayer.new()
+	audio.volume_db = -15
 	add_child(audio)
 	
 	song.loop = false

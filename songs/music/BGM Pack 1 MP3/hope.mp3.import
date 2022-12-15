@@ -12,4 +12,4 @@ dest_files=[ "res://.import/hope.mp3-833f9ffa214e3f72e140a7389ef3d20a.mp3str" ]
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=0.0
