@@ -53,8 +53,8 @@ func pre_attack():
 func attack():
 	$ui/UI_count_horda/horda.text = "Horda "+str(horda)
 	size = ((horda-1) * 5) + 10
+	size += 25 if horda == 10 else 0
 	meta += size
-	
 	printer()
 	$ui.show()
 	$timer.start()
@@ -89,7 +89,7 @@ func death_count(x):
 	printer()
 	if died < ((horda-1) * 5) + 10:
 		return
-	if horda < 9:
+	if horda < 10:
 		pre_attack()
 	else:
 		winner()
@@ -105,7 +105,4 @@ func winner():
 	$ui/aviso.set_text("Para...Béns...!!!")
 	$ui/aviso.rect_position = Vector2(111,88)
 	$ui/aviso.show()
-	$Timer.stop()
 	print("Horda nº ", horda," / ",minutes," minuto(s) ", "e ", seconds," segundo(s).")
-
-

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Helicopter Idle.mp3-451f805b337ee821321c4cc8eb3d664b.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/GB Sound Assets/Helicopter Idle.mp3"
+dest_files=[ "res://.import/Helicopter Idle.mp3-451f805b337ee821321c4cc8eb3d664b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

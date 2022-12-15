@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Level Up 2 (miniclip).ogg-0f1f6134868c61501a165fa128a9a203.oggstr"
+
+[deps]
+
+source_file="res://songs/music/ogg-short-loopable-background-music/Level Up 2 (miniclip).ogg"
+dest_files=[ "res://.import/Level Up 2 (miniclip).ogg-0f1f6134868c61501a165fa128a9a203.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

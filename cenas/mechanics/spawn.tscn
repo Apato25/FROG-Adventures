@@ -82,7 +82,7 @@ margin_top = 22.0
 margin_right = 22.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 2 )
-text = "00 / 00"
+text = "00 / 10"
 
 [node name="horda" type="Label" parent="ui/UI_count_horda"]
 material = SubResource( 4 )

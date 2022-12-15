@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dramatic_boi_v5.mp3-02df98b11fde932a7e33b898b39567c7.mp3str"
+
+[deps]
+
+source_file="res://songs/music/BGM Pack 1 MP3/dramatic_boi_v5.mp3"
+dest_files=[ "res://.import/dramatic_boi_v5.mp3-02df98b11fde932a7e33b898b39567c7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

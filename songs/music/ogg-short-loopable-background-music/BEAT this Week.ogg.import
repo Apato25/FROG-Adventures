@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BEAT this Week.ogg-1e5ba3d7aefd4abe34a31261c6cfe8ee.oggstr"
+
+[deps]
+
+source_file="res://songs/music/ogg-short-loopable-background-music/BEAT this Week.ogg"
+dest_files=[ "res://.import/BEAT this Week.ogg-1e5ba3d7aefd4abe34a31261c6cfe8ee.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

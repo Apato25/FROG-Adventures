@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/enemies/slug_enemy/slug_idle.png" type="Texture" id=1]
 [ext_resource path="res://scripts/enemies/slug.gd" type="Script" id=2]
-[ext_resource path="res://cenas/mechanics/bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/enemies/slug_enemy/slug_walk.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -266,9 +265,6 @@ scale = Vector2( 1, -1 )
 z_index = -1
 texture = ExtResource( 1 )
 hframes = 6
-
-[node name="bar" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="death_cooldown" type="Timer" parent="."]
 one_shot = true

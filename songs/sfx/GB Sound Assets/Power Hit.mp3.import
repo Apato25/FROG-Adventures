@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Power Hit.mp3-e99a2b9b0252685361910350d58701f1.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/GB Sound Assets/Power Hit.mp3"
+dest_files=[ "res://.import/Power Hit.mp3-e99a2b9b0252685361910350d58701f1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
