@@ -78,10 +78,11 @@ func _on_timer_timeout():
 	size -= int(enemies[rng][1])
 
 func death_count(x):
+	var amount = ((horda-1) * 5) + 10 if horda < 10 else 80
 	died += x
 	enemies_death += x
 	printer()
-	if died < ((horda-1) * 5) + 10:
+	if died < amount:
 		return
 	if horda < 10:
 		pre_attack()
