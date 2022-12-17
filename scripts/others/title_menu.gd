@@ -10,3 +10,4 @@ func _on_TextureButton_pressed():
 	Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Back.mp3"))
 	yield(get_tree().create_timer(1), "timeout")
 	return get_tree().change_scene("res://cenas/cenas de teste/Teste.tscn")
+	

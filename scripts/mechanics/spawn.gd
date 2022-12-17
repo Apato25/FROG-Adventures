@@ -1,8 +1,9 @@
 extends Node2D
 
 export (Array, Array, String) var enemies
+onready var path_pos = $path/pos
 
-var difficult := 1
+var difficult := 2
 var horda := 1
 var limit :int
 var size :int
@@ -13,7 +14,6 @@ var text := ["",""]
 
 signal flower_xp
 signal dead_horde
-
 
 func _ready():
 	randomize()
@@ -63,15 +63,9 @@ func _on_timer_timeout():
 	while int(enemies[rng][1]) > size:
 		rng = randi() % difficult
 	
-	
 	var new_enemy = load(enemies[rng][0]).instance()
-	var new_pos = Vector2(
-		0 if randi() % 2 < 1 else 336,
-		0 if randi() % 2 <1 else 189
-	)
-	
-	
-	new_enemy.global_position = new_pos # Posições de teste.
+	path_pos.offset = randi()
+	new_enemy.global_position = path_pos.global_position
 	new_enemy.connect("died", self, "death_count")
 
 	add_child(new_enemy)

@@ -57,11 +57,11 @@ func _perseguindo():
 	velocity = move_and_slide(velocity)
 
 func _on_area_body_entered(body):
-	$area/shape.shape.radius *= 2
+	$area/shape.shape.radius *= 3
 	target = body
 
 func _on_area_body_exited(_body):
-	$area/shape.shape.radius /= 2
+	$area/shape.shape.radius /= 3
 	target = Global.flower
 
 func _on_timer_timeout():

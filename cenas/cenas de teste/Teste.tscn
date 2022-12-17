@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://cenas/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/others/Paused_UI.tscn" type="PackedScene" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://sprites/flower/Lifebar_over.png" type="Texture" id=9]
 [ext_resource path="res://scripts/flower/Controle_flor.gd" type="Script" id=10]
 [ext_resource path="res://cenas/others/scene_gameplay.gd" type="Script" id=11]
+
+[sub_resource type="Curve2D" id=15]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 30, -30, 0, 0, 0, 0, -30, -30, 0, 0, 0, 0, -30, 219, 0, 0, 0, 0, 366, 219, 0, 0, 0, 0, 366, -30, 0, 0, 0, 0, 306, -30 )
+}
 
 [sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
@@ -64,6 +69,13 @@ z_index = 1
 [node name="spawn" parent="." instance=ExtResource( 5 )]
 z_index = 1
 enemies = [ [ "res://cenas/enemies/slug.tscn", "1" ], [ "res://cenas/enemies/firefly.tscn", "1" ], [ "res://cenas/enemies/slug_giant.tscn", "2" ], [ "res://cenas/enemies/firefly_angry.tscn", "2" ] ]
+
+[node name="path" parent="spawn" index="0"]
+curve = SubResource( 15 )
+
+[node name="pos" parent="spawn/path" index="0"]
+position = Vector2( 30, -30 )
+rotation = 3.14159
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 168.602, 62.5796 )
