@@ -19,5 +19,5 @@ func set_visible(is_visible):
 
 
 func _on_mainmenu_bt_pressed():
-		get_tree().paused = false
-		return get_tree().change_scene("res://cenas/others/title_menu.tscn")
+	get_tree().paused = false
+	return get_tree().change_scene("res://cenas/others/title_menu.tscn")

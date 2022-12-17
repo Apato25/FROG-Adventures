@@ -145,7 +145,7 @@ custom_fonts/font = SubResource( 5 )
 text = "NEW GAME"
 align = 1
 
-[node name="audio" type="AudioStreamPlayer2D" parent="."]
+[node name="audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
 
