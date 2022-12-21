@@ -3,7 +3,7 @@ extends Node2D
 export (Array, Array, String) var enemies
 onready var path_pos = $path/pos
 
-var difficult := 2
+var difficult := 1
 var horda := 1
 var limit :int
 var size :int
@@ -91,6 +91,4 @@ func printer():
 	$ui/UI_count_horda/count.text = text[0] +" / " + text[1]
 
 func winner():
-	$ui/aviso.set_text("Para...Béns...!!!")
-	$ui/aviso.rect_position = Vector2(111,88)
-	$ui/aviso.show()
+	Global.flower.get_node("ui/text").new_text("Para...Bens...!!!", true)

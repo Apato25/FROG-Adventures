@@ -34,7 +34,6 @@ func _physics_process(_delta):
 		
 	if velocity.x:
 		$slug_spr.scale.x = -1 if velocity.x < 0 else 1
-	if velocity.x:
 		$reflection_spr.scale.x = -1 if velocity.x < 0 else 1
 	velocity = move_and_slide(velocity * speed)
 

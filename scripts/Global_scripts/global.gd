@@ -3,14 +3,14 @@ extends Node2D
 var flower :Node2D
 var can_attack
 
-func new_song(song:AudioStreamMP3):
-	var audio = AudioStreamPlayer.new()
-	audio.volume_db = -15
-	add_child(audio)
+func new_song(song:AudioStreamMP3, volume:int = -15):
+	var radio = AudioStreamPlayer.new()
+	radio.volume_db = volume
+	add_child(radio)
 	
 	song.loop = false
-	audio.stream = song
-	audio.playing = true
+	radio.stream = song
+	radio.playing = true
 	
-	yield(audio, "finished")
-	audio.queue_free()
+	yield(radio, "finished")
+	radio.queue_free()

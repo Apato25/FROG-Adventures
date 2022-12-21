@@ -154,7 +154,8 @@ func _move(): #aplica velocidade no player o fazendo se mover para a direção i
 	player_velo = lerp(player_velo,dir.normalized() * spd,0.2)
 	se_moveu = 1 if dir else 0
 	player_velo = move_and_slide(player_velo)
-
+	global_position.x = clamp(global_position.x, 10, get_viewport_rect().size.x -10)
+	global_position.y = clamp(global_position.y, 10, get_viewport_rect().size.y -10)
 
 func _on_cooldown_ataque_timeout():
 		esta_atacando = false

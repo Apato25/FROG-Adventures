@@ -12,7 +12,7 @@ export var time := 3.0
 var flor_state :int
 enum {Flor_0,Flor_1}
 
-var flor_max_life = 0
+var flor_max_life = 500
 var current_life = 500
 var flor_life_update = true
 var old_life = current_life
@@ -60,13 +60,11 @@ func _physics_process(delta):
 		flor_receiveXp(delta)
 	match flor_state:
 		Flor_0:
-			flor_max_life = 500
 			anim.play("Flor_Nivel1")
 		Flor_1:
-			flor_max_life = 750
 			anim.play("Flor_Nivel2")
 	
-	if body_count < 0.2 and area_count < 1:
+	if body_count < 0.2 and area_count < 1.5:
 		is_attacked = false
 	else:
 		is_attacked = true
@@ -79,23 +77,17 @@ func _physics_process(delta):
 		return get_tree().change_scene("res://cenas/others/title_menu.tscn")
 
 func flor_receiveXp(delta):
-#	if flor_level == 5:
-#		can_xp = false
-#		flor_xp = 250
-#		print("Level Máximo!")
-#		return
-	
 	var xp = flor_level
 	flor_xp += delta * int(!is_attacked)
 	flor_level = (
-		5 if flor_xp >= 650
+		5 if flor_xp >= 680
 		else 4 if flor_xp >= 400
 		else 3 if flor_xp >= 200
 		else 2 if flor_xp >= 50
 		else 1
 	) 
 	var max_xp = (
-		650 if flor_level >= 4
+		680 if flor_level >= 4
 		else 400 if flor_level == 3
 		else 200 if flor_level == 2
 		else 50
@@ -106,8 +98,11 @@ func flor_receiveXp(delta):
 	if xp != flor_level:
 		Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Select 2.mp3"))
 		flor_state = 1 if flor_level >= 2 else 0
-		heal(250)
+#		flor_state = flor_level - 1
+		levelUp()
 		text.new_text("Subi de nivel!")
+		if flor_level == 5:
+			text.new_text("Level Maximo!")
 
 func xp_gain(can:bool):
 	can_xp = can
@@ -119,17 +114,21 @@ func bonus(x:int):
 	flor_xp += x *10
 	text.new_text("Mais " +  str(x*10) + " de XP Bonus!!!")
 
+func levelUp():
+	flor_max_life += 150
+	heal(150)
+
 func heal(x:int):
-	current_life += x
-	old_life += x
+	current_life = min(current_life +x, flor_max_life)
+	old_life = min(old_life +x, flor_max_life)
 
 func _on_flower_area_area_entered(area):
 	if area.name == "bullet":
-		area_count += 1
+		area_count += 1.5
 
 func _on_flower_area_area_exited(area):
 	if area.name == "bullet":
-		area_count -= 1
+		area_count -= 1.5
 
 func _on_flower_area_body_entered(_body):
 	body_count += 0.2

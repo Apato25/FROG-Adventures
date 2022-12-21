@@ -126,15 +126,15 @@ anims/logo_anim = SubResource( 2 )
 
 [node name="buttons" type="CanvasLayer" parent="."]
 
-[node name="TextureButton" type="TextureButton" parent="buttons"]
+[node name="new_game" type="TextureButton" parent="buttons"]
 margin_left = 128.152
-margin_top = 132.846
+margin_top = 133.0
 margin_right = 224.152
-margin_bottom = 158.846
+margin_bottom = 159.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="buttons/TextureButton"]
+[node name="Label" type="Label" parent="buttons/new_game"]
 material = SubResource( 4 )
 margin_left = 22.7785
 margin_top = 4.7973
@@ -142,11 +142,28 @@ margin_right = 76.7785
 margin_bottom = 18.7973
 custom_colors/font_color = Color( 0.701961, 0.72549, 0.968627, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "NEW GAME"
+text = "NOVO JOGO"
+align = 1
+
+[node name="credits" type="TextureButton" parent="buttons"]
+margin_left = 128.152
+margin_top = 159.0
+margin_right = 224.152
+margin_bottom = 185.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="buttons/credits"]
+material = SubResource( 4 )
+margin_left = 22.7785
+margin_top = 4.7973
+margin_right = 76.7785
+margin_bottom = 18.7973
+custom_colors/font_color = Color( 0.701961, 0.72549, 0.968627, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "CRÉDITOS"
 align = 1
 
 [node name="audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
-
-[connection signal="pressed" from="buttons/TextureButton" to="." method="_on_TextureButton_pressed"]

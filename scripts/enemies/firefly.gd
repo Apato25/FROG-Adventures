@@ -4,7 +4,6 @@ var death_particle = preload("res://cenas/mechanics/paticles_death.tscn")
 onready var de_part = $death_particle_pos
 onready var anim = $anim_enemy_gunner
 
-
 enum {perseguindo, morto}
 var state :int
 var target
@@ -12,6 +11,7 @@ var target
 var velocity :Vector2
 export (int) var speed = 30
 export (int) var life = 3
+
 var attack := true
 export (float, 0, 0.5, 0.05) var time = 0.5
 var stun :bool
@@ -26,6 +26,7 @@ var arr :Array
 func _ready():
 	target = Global.flower
 	modulate = color
+	
 	for h in $cannons.get_children():
 		arr.append(h.rotation_degrees)
 
@@ -40,8 +41,7 @@ func _physics_process(_delta):
 		$enemy_spr.scale.x = 1 if velocity.x < 0 else -1
 	elif target:
 		$enemy_spr.scale.x = 1 if target.global_position.x < global_position.x else -1
-	if velocity.x:
-		$reflection_spr.scale.x = 1 if velocity.x < 0 else -1
+	$reflection_spr.scale.x = $enemy_spr.scale.x
 
 func _perseguindo():
 	if target:
@@ -50,18 +50,18 @@ func _perseguindo():
 			velocity = lerp(velocity,global_position.direction_to(target.global_position) * speed,0.1)
 			$timer.stop()
 			attack = true
-		elif attack:
+		elif attack and global_position.y <= 177:
 			velocity = lerp(velocity, Vector2.ZERO, 0.1)
 			anim.play("attack_charge")
 			
 	velocity = move_and_slide(velocity)
 
 func _on_area_body_entered(body):
-	$area/shape.shape.radius *= 3
+	$area/shape.shape.radius *= 2
 	target = body
 
 func _on_area_body_exited(_body):
-	$area/shape.shape.radius /= 3
+	$area/shape.shape.radius /= 2
 	target = Global.flower
 
 func _on_timer_timeout():
@@ -86,6 +86,7 @@ func hit():
 	life = max(life -1, 0)
 	emit_signal("hitted", life)
 	stun = true
+	
 	if !life:
 		Global.new_song(load("res://songs/sfx/GB Sound Assets/Item Get.mp3"))
 		velocity = Vector2()

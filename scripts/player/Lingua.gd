@@ -25,7 +25,7 @@ func _physics_process(delta):
 		emit_signal("attack", true)
 		if sfx:
 			sfx = false
-			Global.new_song(load("res://songs/sfx/GB Sound Assets/Robot Walk.mp3"))
+			Global.new_song(load("res://songs/sfx/GB Sound Assets/Robot Walk.mp3"), -5)
 	
 	if Input.is_action_pressed("Attack") == false:
 		posLingua.position = posLingua.position.linear_interpolate(inipos.position, delta * 40)
