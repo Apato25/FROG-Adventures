@@ -91,4 +91,4 @@ func printer():
 	$ui/UI_count_horda/count.text = text[0] +" / " + text[1]
 
 func winner():
-	Global.flower.get_node("ui/text").new_text("Para...Bens...!!!", true)
+	Global.flower.get_node("ui/text").new_text("Parabens!!!")
