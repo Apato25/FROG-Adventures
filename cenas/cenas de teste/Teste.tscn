@@ -71,7 +71,6 @@ z_index = 1
 position = Vector2( 168, 103 )
 
 [node name="spawn" parent="YSort" instance=ExtResource( 5 )]
-z_index = 1
 enemies = [ [ "res://cenas/enemies/slug.tscn", "1" ], [ "res://cenas/enemies/firefly.tscn", "1" ], [ "res://cenas/enemies/slug_giant.tscn", "2" ], [ "res://cenas/enemies/firefly_angry.tscn", "2" ] ]
 
 [node name="path" parent="YSort/spawn" index="0"]
