@@ -293,9 +293,9 @@ rotation = 1.5708
 shape = SubResource( 6 )
 
 [node name="Flor_spr" type="Sprite" parent="."]
-position = Vector2( 0, -11 )
+position = Vector2( 0, 1 )
 texture = ExtResource( 1 )
-offset = Vector2( 0, -10 )
+offset = Vector2( 0, -25 )
 hframes = 4
 
 [node name="Flor_anim" type="AnimationPlayer" parent="."]
