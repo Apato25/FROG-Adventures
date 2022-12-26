@@ -628,7 +628,6 @@ tracks/5/keys = {
 extents = Vector2( 7, 10 )
 
 [node name="Player" type="KinematicBody2D"]
-z_index = 2
 script = ExtResource( 1 )
 
 [node name="colisaoFrog" type="CollisionShape2D" parent="."]

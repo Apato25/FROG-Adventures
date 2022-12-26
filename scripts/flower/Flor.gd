@@ -10,7 +10,7 @@ var is_attacked = false
 export var time := 3.0
 
 var flor_state :int
-enum {Flor_0,Flor_1}
+enum {Flor_0,Flor_1,Flor_2,Flor_3,Flor_4}
 
 var flor_max_life = 500
 var current_life = 500
@@ -63,6 +63,12 @@ func _physics_process(delta):
 			anim.play("Flor_Nivel1")
 		Flor_1:
 			anim.play("Flor_Nivel2")
+		Flor_2:
+			anim.play("Flor_Nivel3")
+		Flor_3:
+			anim.play("Flor_Nivel4")
+		Flor_4:
+			anim.play("Flor_Nivel5")
 	
 	if body_count < 0.2 and area_count < 1.5:
 		is_attacked = false
@@ -78,6 +84,7 @@ func _physics_process(delta):
 
 func flor_receiveXp(delta):
 	var xp = flor_level
+	#flor_xp += 40 * delta
 	flor_xp += delta * int(!is_attacked)
 	flor_level = (
 		5 if flor_xp >= 680
@@ -97,8 +104,8 @@ func flor_receiveXp(delta):
 	
 	if xp != flor_level:
 		Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Select 2.mp3"))
-		flor_state = 1 if flor_level >= 2 else 0
-#		flor_state = flor_level - 1
+		#flor_state = 1 if flor_level >= 2 else 0
+		flor_state = flor_level - 1
 		levelUp()
 		text.new_text("Subi de nivel!")
 		if flor_level == 5:

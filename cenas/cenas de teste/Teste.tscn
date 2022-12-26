@@ -47,9 +47,11 @@ shader_param/noise = SubResource( 12 )
 [node name="Teste" type="Node2D"]
 script = ExtResource( 11 )
 
+[node name="Map_01" parent="." instance=ExtResource( 4 )]
+
 [node name="UI" type="Node2D" parent="."]
 position = Vector2( 168, 81.7027 )
-z_index = 1
+z_index = 2
 
 [node name="life_bar" type="TextureProgress" parent="UI"]
 margin_left = -12.0
@@ -61,23 +63,24 @@ texture_over = ExtResource( 9 )
 texture_progress = ExtResource( 8 )
 script = ExtResource( 10 )
 
-[node name="Map_01" parent="." instance=ExtResource( 4 )]
-
-[node name="Flor" parent="." instance=ExtResource( 6 )]
+[node name="YSort" type="YSort" parent="."]
 z_index = 1
 
-[node name="spawn" parent="." instance=ExtResource( 5 )]
+[node name="Flor" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 168, 103 )
+
+[node name="spawn" parent="YSort" instance=ExtResource( 5 )]
 z_index = 1
 enemies = [ [ "res://cenas/enemies/slug.tscn", "1" ], [ "res://cenas/enemies/firefly.tscn", "1" ], [ "res://cenas/enemies/slug_giant.tscn", "2" ], [ "res://cenas/enemies/firefly_angry.tscn", "2" ] ]
 
-[node name="path" parent="spawn" index="0"]
+[node name="path" parent="YSort/spawn" index="0"]
 curve = SubResource( 15 )
 
-[node name="pos" parent="spawn/path" index="0"]
+[node name="pos" parent="YSort/spawn/path" index="0"]
 position = Vector2( 30, -30 )
 rotation = 3.14159
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 168.602, 62.5796 )
 
 [node name="distortion" type="ColorRect" parent="."]
@@ -88,6 +91,7 @@ margin_bottom = 189.0
 
 [node name="Paused_UI" parent="." instance=ExtResource( 2 )]
 layer = 3
+visible = false
 
 [node name="transition" parent="." instance=ExtResource( 3 )]
 layer = 2
@@ -95,4 +99,4 @@ layer = 2
 [node name="audio" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
 
-[editable path="spawn"]
+[editable path="YSort/spawn"]
