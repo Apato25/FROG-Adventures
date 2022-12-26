@@ -84,8 +84,8 @@ func _physics_process(delta):
 
 func flor_receiveXp(delta):
 	var xp = flor_level
-	flor_xp += 40 * delta
-	#flor_xp += delta * int(!is_attacked)
+	#flor_xp += 40 * delta
+	flor_xp += delta * int(!is_attacked)
 	flor_level = (
 		5 if flor_xp >= 680
 		else 4 if flor_xp >= 400
