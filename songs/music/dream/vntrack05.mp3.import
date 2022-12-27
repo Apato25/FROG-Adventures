@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/vntrack05.mp3-092c4f609fab8c50b90c8da028f7944d.mp3str"
+
+[deps]
+
+source_file="res://songs/music/dream/vntrack05.mp3"
+dest_files=[ "res://.import/vntrack05.mp3-092c4f609fab8c50b90c8da028f7944d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

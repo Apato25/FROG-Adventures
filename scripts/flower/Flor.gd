@@ -21,6 +21,8 @@ var flor_xp = 0
 var flor_level := 1
 var can_xp :bool
 
+signal level_up
+
 func _enter_tree():
 	Global.flower = self
 
@@ -29,6 +31,7 @@ func _ready():
 	$ui/label.hide()
 	yield(get_tree().create_timer(2), "timeout")
 	can_xp = true
+	return connect("level_up", text, "new_level")
 
 func revive():
 	showing(time)
@@ -83,9 +86,13 @@ func _physics_process(delta):
 		return get_tree().change_scene("res://cenas/others/title_menu.tscn")
 
 func flor_receiveXp(delta):
+	if flor_level == 5:
+		return
+	
 	var xp = flor_level
-	#flor_xp += 40 * delta
-	flor_xp += delta * int(!is_attacked)
+	flor_xp += 70 * delta
+#	flor_xp += delta * int(!is_attacked)
+	
 	flor_level = (
 		5 if flor_xp >= 680
 		else 4 if flor_xp >= 400
@@ -104,7 +111,6 @@ func flor_receiveXp(delta):
 	
 	if xp != flor_level:
 		Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Select 2.mp3"))
-		#flor_state = 1 if flor_level >= 2 else 0
 		flor_state = flor_level - 1
 		levelUp()
 		text.new_text("Subi de nivel!")
@@ -122,6 +128,7 @@ func bonus(x:int):
 	text.new_text("Mais " +  str(x*10) + " de XP Bonus!!!")
 
 func levelUp():
+	emit_signal("level_up", flor_level)
 	flor_max_life += 150
 	heal(150)
 

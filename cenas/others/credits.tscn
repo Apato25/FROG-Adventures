@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/others/credits.gd" type="Script" id=1]
 [ext_resource path="res://sprites/others/Screen_pause.png" type="Texture" id=2]
@@ -16,11 +16,6 @@ shader = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=2]
 outline_size = 1
 outline_color = Color( 0.686275, 0.505882, 0.745098, 1 )
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=4]
-outline_size = 1
-outline_color = Color( 0.654902, 0.529412, 0.780392, 1 )
 font_data = ExtResource( 3 )
 
 [node name="credits" type="CanvasLayer"]
@@ -44,58 +39,37 @@ flat = true
 
 [node name="title" type="Label" parent="."]
 material = SubResource( 3 )
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -26.5
-margin_right = 26.5
+margin_right = 53.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 2 )
 text = "Créditos"
 
-[node name="thanks" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -87.0
-margin_top = -7.5
-margin_right = 39.0
-margin_bottom = 5.5
-rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = SubResource( 4 )
-text = "Obrigado por jogar!!!"
-align = 1
-
-[node name="scale" type="Node2D" parent="."]
-scale = Vector2( 0.65, 0.65 )
-
-[node name="appreciation" type="Label" parent="scale"]
+[node name="appreciation" type="Label" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 6.15385
-margin_top = 29.2311
-margin_right = 108.154
-margin_bottom = 298.231
+margin_left = 134.0
+margin_top = -87.5
+margin_right = 236.0
+margin_bottom = 181.5
+rect_scale = Vector2( 0.65, 0.65 )
 custom_fonts/font = SubResource( 2 )
 text = "Programação:
-- Apato
-- Frajola
+
+Apato
+Frajola
 
 Artes:
 
-- Apato
+Apato
 
 Música:
 
-- Artista_01
-- Artista_02
+Potat0Master
+TERNOX
 
 Efeitos sonoros:
 
-- Artista_03"
-
-[node name="timer" type="Timer" parent="."]
-one_shot = true
+OmegaPixelArt"
+align = 1
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
-[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

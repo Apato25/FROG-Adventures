@@ -2,10 +2,14 @@ extends Label
 
 var write := true
 var reverse := []
+var pos := 76
 
 func _ready():
 	yield(get_tree().create_timer(1), "timeout")
 	new_text("Por favor, derrote meus inimigos!")
+
+func new_level(level):
+	pos = 57 if level == 5 else 59 if level == 4 else 70 if level == 3 else 76
 
 func new_text(words:String, time:float = 3.0):
 	if !write:
@@ -17,7 +21,10 @@ func new_text(words:String, time:float = 3.0):
 	show()
 	timer(time)
 	
+	
+	rect_position.y = pos
 	var count = 0
+	
 	for y in words:
 		text += y
 		rect_position.x = 165 - count * 3
