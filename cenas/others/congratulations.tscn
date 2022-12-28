@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/others/parabens.gd" type="Script" id=2]
 [ext_resource path="res://sprites/others/Screen_pause.png" type="Texture" id=3]
 [ext_resource path="res://fonts/monogram-extended.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://sprites/flower/flower_lunar/flower_stage04.png" type="Texture" id=5]
+[ext_resource path="res://sprites/flower/flower_lunar/flower_stage05.png" type="Texture" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -49,6 +49,7 @@ margin_left = -34.0
 margin_top = -19.0
 margin_right = 34.0
 margin_bottom = 1.0
+custom_colors/font_color_hover = Color( 0.521569, 0.368627, 0.701961, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "menu"
 flat = true

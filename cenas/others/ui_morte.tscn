@@ -48,6 +48,7 @@ margin_left = -34.0
 margin_top = -39.0
 margin_right = 34.0
 margin_bottom = -19.0
+custom_colors/font_color_hover = Color( 0.521569, 0.368627, 0.701961, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "recomeçar"
 flat = true
