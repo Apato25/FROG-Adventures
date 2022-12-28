@@ -16,14 +16,16 @@ signal flower_xp
 signal dead_horde
 
 func _ready():
+	
+	winner()
 	randomize()
 	$ui/aviso.hide()
-	
 	var _conect = connect("flower_xp", Global.flower, "xp_gain")
 	_conect = connect("dead_horde", Global.flower, "bonus")
 	
 	yield(get_tree().create_timer(2), "timeout")
 	attack()
+	
 
 func pre_attack():
 	emit_signal("flower_xp", true)
@@ -78,7 +80,7 @@ func death_count(x):
 	printer()
 	if died < amount:
 		return
-	if horda < 10:
+	if horda < 1:
 		pre_attack()
 	else:
 		winner()
@@ -91,4 +93,4 @@ func printer():
 	$ui/UI_count_horda/count.text = text[0] +" / " + text[1]
 
 func winner():
-	Global.flower.get_node("ui/text").new_text("Parabens!!!")
+	$"../../parabens".game_completed = true

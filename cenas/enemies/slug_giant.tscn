@@ -250,7 +250,7 @@ time = 0.05
 size = 2
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2( -2.06303, 6.44174 )
+position = Vector2( -2, 6 )
 shape = SubResource( 1 )
 
 [node name="slugAnim" type="AnimationPlayer" parent="."]
@@ -276,7 +276,7 @@ one_shot = true
 [node name="death_particle_pos" type="Position2D" parent="."]
 
 [node name="area" type="Area2D" parent="."]
-position = Vector2( -2, 7 )
+position = Vector2( -2, 6.66667 )
 collision_layer = 8
 collision_mask = 4
 

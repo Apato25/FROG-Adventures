@@ -11,6 +11,7 @@ var body_count := 0.0
 var area_count := 0.0
 var is_attacked = false
 
+var sprite_flor
 export var time := 3.0
 
 var flor_state :int
@@ -20,7 +21,6 @@ var flor_max_life = 500
 var current_life = 500
 var flor_life_update = true
 var old_life = current_life
-
 var flor_xp = 0
 var flor_level := 1
 var can_xp :bool
@@ -66,6 +66,7 @@ func showing(x:float):
 
 
 func _physics_process(delta):
+	sprite_flor = get_node("flower_area/Flor_spr")
 	if can_xp:
 		flor_receiveXp(delta)
 	match flor_state:
@@ -90,7 +91,8 @@ func _physics_process(delta):
 		current_life -= body_count + area_count
 	
 	if current_life <= 0:
-		return get_tree().change_scene("res://cenas/others/title_menu.tscn")
+		$"../../ui_morte".is_dead = true
+		#return get_tree().change_scene("res://cenas/others/title_menu.tscn")
 
 func flor_receiveXp(delta):
 	if flor_level == 5:
@@ -156,3 +158,4 @@ func _on_flower_area_body_entered(_body):
 
 func _on_area_body_exited(_body):
 	body_count -= 0.2
+

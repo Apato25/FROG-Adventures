@@ -16,8 +16,7 @@
 radius = 7.0
 height = 3.0
 
-[sub_resource type="Animation" id=1]
-resource_name = "Flor_Nivel1"
+[sub_resource type="Animation" id=14]
 length = 2.0
 loop = true
 step = 0.5
@@ -300,7 +299,7 @@ hframes = 4
 
 [node name="Flor_anim" type="AnimationPlayer" parent="."]
 autoplay = "Flor_Nivel1"
-anims/Flor_Nivel1 = SubResource( 1 )
+anims/Flor_Nivel1 = SubResource( 14 )
 anims/Flor_Nivel2 = SubResource( 2 )
 anims/Flor_Nivel3 = SubResource( 9 )
 anims/Flor_Nivel4 = SubResource( 10 )
