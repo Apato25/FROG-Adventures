@@ -80,7 +80,7 @@ func death_count(x):
 	printer()
 	if died < amount:
 		return
-	if horda < 1:
+	if horda < 10:
 		pre_attack()
 	else:
 		winner()

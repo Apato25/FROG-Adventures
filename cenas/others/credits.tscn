@@ -48,10 +48,10 @@ text = "Créditos"
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 134.0
-margin_top = -87.5
+margin_top = -92.5
 margin_right = 236.0
-margin_bottom = 181.5
-rect_scale = Vector2( 0.65, 0.65 )
+margin_bottom = 240.5
+rect_scale = Vector2( 0.55, 0.55 )
 custom_fonts/font = SubResource( 2 )
 text = "Programação:
 
@@ -69,7 +69,11 @@ TERNOX
 
 Efeitos sonoros:
 
-OmegaPixelArt"
+OmegaPixelArt
+
+Fontes:
+
+Datagoblin"
 align = 1
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
