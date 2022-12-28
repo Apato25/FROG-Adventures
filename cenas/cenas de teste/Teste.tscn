@@ -99,6 +99,6 @@ layer = 2
 
 [node name="audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-volume_db = -10.0
+volume_db = -20.0
 
 [editable path="YSort/spawn"]

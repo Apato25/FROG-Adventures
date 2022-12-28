@@ -3,6 +3,10 @@ extends Node2D
 onready var anim = $Flor_anim
 onready var text = $ui/text
 
+var parent_path
+var parent
+
+
 var body_count := 0.0
 var area_count := 0.0
 var is_attacked = false
@@ -28,6 +32,7 @@ func _enter_tree():
 
 
 func _ready():
+	parent_path = $".."
 	$ui/label.hide()
 	yield(get_tree().create_timer(2), "timeout")
 	can_xp = true
@@ -53,7 +58,9 @@ func showing(x:float):
 	$ui/label.hide()
 	var player = load("res://cenas/player/Player.tscn").instance()
 	player.global_position = global_position
-	get_tree().current_scene.add_child(player)
+	
+	#get_tree().current_scene.add_child(player)
+	parent_path.add_child(player)
 	Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Select.mp3"))
 	time += 2
 
@@ -90,8 +97,8 @@ func flor_receiveXp(delta):
 		return
 	
 	var xp = flor_level
-	flor_xp += 70 * delta
-#	flor_xp += delta * int(!is_attacked)
+	#flor_xp += 70 * delta
+	flor_xp += delta * int(!is_attacked)
 	
 	flor_level = (
 		5 if flor_xp >= 680
