@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hope.mp3-f5d429ddc35c83cc3836d1292c8d63b1.mp3str"
+
+[deps]
+
+source_file="res://songs/music/hope.mp3"
+dest_files=[ "res://.import/hope.mp3-f5d429ddc35c83cc3836d1292c8d63b1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0.0

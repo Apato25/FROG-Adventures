@@ -29,7 +29,7 @@ func new_text(words:String, time:float = 3.0):
 		text += y
 		rect_position.x = 165 - count * 3
 		count += 1
-		Global.new_song(load("res://songs/sfx/GB Sound Assets/Hitsound 1.mp3"))
+		Global.new_song(load("res://songs/sfx/Hitsound 1.mp3"))
 		yield(get_tree().create_timer(0.05), "timeout")
 
 

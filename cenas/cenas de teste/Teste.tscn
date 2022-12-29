@@ -11,7 +11,7 @@
 [ext_resource path="res://sprites/flower/Lifebar_over.png" type="Texture" id=9]
 [ext_resource path="res://scripts/flower/Controle_flor.gd" type="Script" id=10]
 [ext_resource path="res://cenas/others/scene_gameplay.gd" type="Script" id=11]
-[ext_resource path="res://songs/music/dream/vntrack17.mp3" type="AudioStream" id=12]
+[ext_resource path="res://songs/music/vntrack17.mp3" type="AudioStream" id=12]
 [ext_resource path="res://cenas/others/ui_morte.tscn" type="PackedScene" id=13]
 [ext_resource path="res://cenas/others/congratulations.tscn" type="PackedScene" id=14]
 

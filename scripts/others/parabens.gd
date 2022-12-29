@@ -6,7 +6,7 @@ func _ready():
 	set_visible(false)
 	get_tree().paused = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if game_completed:
 		set_visible(true)
