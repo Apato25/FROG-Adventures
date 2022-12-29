@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Charge 2.mp3-8dd23204d84a415cccc575e194796fe9.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/Charge 2.mp3"
+dest_files=[ "res://.import/Charge 2.mp3-8dd23204d84a415cccc575e194796fe9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Eat.mp3-d46c7f5f7e6eb6c94ad36768a9b80eb7.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/Eat.mp3"
+dest_files=[ "res://.import/Eat.mp3-d46c7f5f7e6eb6c94ad36768a9b80eb7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

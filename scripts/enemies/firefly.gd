@@ -80,7 +80,7 @@ func _on_timer_timeout():
 		
 		rot +=1
 		get_tree().current_scene.add_child(bullet)
-	Global.new_song(load("res://songs/sfx/GB Sound Assets/Power Hit.mp3"))
+	Global.new_song(load("res://songs/sfx/Power Hit.mp3"))
 
 func hit():
 	life = max(life -1, 0)
@@ -88,11 +88,11 @@ func hit():
 	stun = true
 	
 	if !life:
-		Global.new_song(load("res://songs/sfx/GB Sound Assets/Item Get.mp3"))
+		Global.new_song(load("res://songs/sfx/Item Get.mp3"))
 		velocity = Vector2()
 		death()
 	else:
-		Global.new_song(load("res://songs/sfx/GB Sound Assets/Charge 3.mp3"))
+		Global.new_song(load("res://songs/sfx/Charge 3.mp3"))
 		get_node("enemy_spr").modulate = Color(255,255,255)
 		yield(get_tree().create_timer(time) , "timeout")
 		stun = false

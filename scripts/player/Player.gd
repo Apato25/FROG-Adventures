@@ -174,9 +174,9 @@ func hit():
 	if !life:
 		death_part()
 		$death_cooldown.start()
-		Global.new_song(load("res://songs/sfx/GB Sound Assets/Drop.mp3"))
+		Global.new_song(load("res://songs/sfx/Drop.mp3"))
 	else:
-		Global.new_song(load("res://songs/sfx/GB Sound Assets/Eat.mp3"))
+		Global.new_song(load("res://songs/sfx/Eat.mp3"))
 		emit_signal("new_life", life)
 		invunerable(3)
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Robot Walk.mp3-f9e4242cf6f621d63992482212971183.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/Robot Walk.mp3"
+dest_files=[ "res://.import/Robot Walk.mp3-f9e4242cf6f621d63992482212971183.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

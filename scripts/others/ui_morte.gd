@@ -6,7 +6,7 @@ func _ready():
 	set_visible(false)
 	get_tree().paused = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_dead:
 		set_visible(true)
 		get_tree().paused = true
@@ -24,4 +24,4 @@ func set_visible(is_visible):
 
 
 func _on_restart_bt_pressed():
-	get_tree().reload_current_scene()
+	return get_tree().reload_current_scene()

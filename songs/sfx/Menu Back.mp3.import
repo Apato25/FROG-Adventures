@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Menu Back.mp3-434ca045dff2afd7cfda8a304858f6f6.mp3str"
+
+[deps]
+
+source_file="res://songs/sfx/Menu Back.mp3"
+dest_files=[ "res://.import/Menu Back.mp3-434ca045dff2afd7cfda8a304858f6f6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

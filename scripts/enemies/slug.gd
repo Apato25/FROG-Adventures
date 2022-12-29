@@ -53,11 +53,11 @@ func hit():
 	stun = true
 
 	if !life:
-		Global.new_song(load("res://songs/sfx/GB Sound Assets/Charge 2.mp3"))
+		Global.new_song(load("res://songs/sfx/Charge 2.mp3"))
 		velocity = Vector2()
 		death()
 	else:
-		Global.new_song(load("res://songs/sfx/GB Sound Assets/Charge1.mp3"))
+		Global.new_song(load("res://songs/sfx/Charge1.mp3"))
 		get_node("slug_spr").modulate = Color(255, 255, 255)
 		yield(get_tree().create_timer(time), "timeout")
 		stun = false

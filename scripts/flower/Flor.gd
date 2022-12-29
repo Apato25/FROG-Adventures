@@ -61,7 +61,7 @@ func showing(x:float):
 	
 	#get_tree().current_scene.add_child(player)
 	parent_path.add_child(player)
-	Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Select.mp3"))
+	Global.new_song(load("res://songs/sfx/Menu Select.mp3"))
 	time += 2
 
 
@@ -109,17 +109,17 @@ func flor_receiveXp(delta):
 		else 2 if flor_xp >= 50
 		else 1
 	) 
-	var max_xp = (
-		680 if flor_level >= 4
-		else 400 if flor_level == 3
-		else 200 if flor_level == 2
-		else 50
-	)
-	
-	print("XP: ", int(flor_xp),"/",max_xp, " / ", "Level: ", flor_level)
+#	var max_xp = (
+#		680 if flor_level >= 4
+#		else 400 if flor_level == 3
+#		else 200 if flor_level == 2
+#		else 50
+#	)
+#
+#	print("XP: ", int(flor_xp),"/",max_xp, " / ", "Level: ", flor_level)
 	
 	if xp != flor_level:
-		Global.new_song(load("res://songs/sfx/GB Sound Assets/Menu Select 2.mp3"))
+		Global.new_song(load("res://songs/sfx/Menu Select 2.mp3"))
 		flor_state = flor_level - 1
 		levelUp()
 		text.new_text("Subi de nivel!")
