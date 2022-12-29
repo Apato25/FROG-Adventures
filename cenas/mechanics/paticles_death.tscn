@@ -20,7 +20,6 @@ scale_curve = SubResource( 2 )
 
 [node name="paticles_death" type="Particles2D"]
 emitting = false
-amount = 20
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 3 )

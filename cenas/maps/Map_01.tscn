@@ -1,31 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprites/maps/background_back.png" type="Texture" id=2]
 [ext_resource path="res://sprites/maps/background_flowers.png" type="Texture" id=3]
 [ext_resource path="res://sprites/maps/background_flowers_reflection.png" type="Texture" id=4]
-
-[sub_resource type="Shader" id=7]
-code = "shader_type canvas_item;
-
-uniform bool enable_shader = false;
-uniform float WAVINESS = 60.0;
-uniform float WAVE_SPEED = 10.0;
-uniform float WAVE_DAMPING = 1100.0;
-void fragment() {
-    //COLOR = texture(TEXTURE, UV + vec2(sin(WAVINESS * UV.y + (WAVE_SPEED * TIME)) / WAVE_DAMPING, 0));
-    if (enable_shader) {
-        COLOR = texture(TEXTURE, UV + vec2(sin(WAVINESS * UV.y + (WAVE_SPEED * TIME)) / WAVE_DAMPING, 0));
-    } else {
-        COLOR = texture(TEXTURE, UV);
-    }
-}"
-
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
-shader_param/enable_shader = true
-shader_param/WAVINESS = 10.0
-shader_param/WAVE_SPEED = 5.0
-shader_param/WAVE_DAMPING = 1100.0
 
 [sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/background_front_woods.png-63598a9fbad513aa929e1f04025fa7f5.stex"
@@ -44,7 +21,6 @@ texture = ExtResource( 2 )
 
 [node name="Background_flower_reflection" type="Sprite" parent="background"]
 modulate = Color( 1, 1, 1, 0.392157 )
-material = SubResource( 8 )
 position = Vector2( 168, 95 )
 z_index = -3
 texture = ExtResource( 4 )
