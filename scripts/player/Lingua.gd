@@ -13,17 +13,24 @@ onready var inipo_refs = $lingua__reflection/pos_inicio
 export (int) var reach = 60
 var sfx := true
 var lingua_pos
+var is_attack = false
 signal attack
 
 func _physics_process(delta):
 	print(lingua_pos)
+	
 	if OS.has_touchscreen_ui_hint():
 		lingua_pos = Global.atk_mobile_pos
 	else:
 		lingua_pos = get_local_mouse_position()
 	
+	if Input.is_action_pressed("Attack") or Global.is_atk:
+		is_attack = true
+	else:
+		is_attack = false
+	
 	#lingua normal
-	if Input.is_action_pressed("Attack") == true and Global.can_attack == true:
+	if is_attack == true and Global.can_attack == true:
 		posLingua.position = posLingua.position.linear_interpolate(lingua_pos.limit_length(reach), delta * 20)
 		lingua.set_point_position(1,posLingua.position)
 		emit_signal("attack", true)
@@ -31,17 +38,17 @@ func _physics_process(delta):
 			sfx = false
 			Global.new_song(load("res://songs/sfx/Robot Walk.mp3"), -5)
 	
-	if Input.is_action_pressed("Attack") == false:
+	if is_attack == false:
 		posLingua.position = posLingua.position.linear_interpolate(inipos.position, delta * 40)
 		lingua.set_point_position(1,posLingua.position)
 		emit_signal("attack", false)
 		sfx = true
 	
 	#reflexo da lingua
-	if Input.is_action_pressed("Attack") == true and Global.can_attack == true:
+	if is_attack == true and Global.can_attack == true:
 		posLingua_ref.position = posLingua_ref.position.linear_interpolate(lingua_pos.limit_length(reach), delta * 20)
 		lingua_ref.set_point_position(1,posLingua_ref.position)
 	
-	if Input.is_action_pressed("Attack") == false:
+	if is_attack == false:
 		posLingua_ref.position = posLingua_ref.position.linear_interpolate(inipo_refs.position, delta * 40)
 		lingua_ref.set_point_position(1,posLingua_ref.position)

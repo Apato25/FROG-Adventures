@@ -8,14 +8,13 @@ func _ready():
 	return get_parent().connect("attack", self, "disabled")
 
 func _on_timer_timeout():
-	
 	look_at(get_global_mouse_position())
 	
 	$shape.shape.extents.x = lerp(
 		$shape.shape.extents.x,
 		min(
 			global_position.distance_to(get_global_mouse_position())/2,
-			get_parent().reach/2
+			get_parent().reach/1.90
 			),
 		1
 	)

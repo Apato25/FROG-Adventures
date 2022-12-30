@@ -18,6 +18,7 @@ func _input(event):
 		if $attack_bt.is_pressed():
 			move_attack_vec = calculate_move_vector_atk(event.position)
 			joystick_active = true
+			Global.is_atk = true
 			
 		
 	if event is InputEventScreenTouch:
@@ -26,6 +27,7 @@ func _input(event):
 		
 		if  $attack_bt.is_pressed() == false:
 			joystick_active = false
+			Global.is_atk = false
 
 func _physics_process(delta):
 	print(Global.atk_mobile_pos)
