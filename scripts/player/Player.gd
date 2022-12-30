@@ -51,10 +51,21 @@ func _parado():
 	_set_state(_check_parado())
 
 func _andando():
-	var animation = (
+	var animation
+	if OS.has_touchscreen_ui_hint():
+		
+		if _get_direction().y > 0:
+			animation = "andando_para_baixo"
+		else:
+			animation = "andando_de_costas" 
+		if _get_direction().x > 0.50 or _get_direction().x < -0.50:
+			animation = "andando_de_frente"
+		
+	else:
+		animation = (
 		"andando_para_baixo" if _get_direction().y > 0 else "andando_de_costas" 
-		if _get_direction().y > 0 else "andando_de_frente"
-	)
+		if _get_direction().y < 0 else "andando_de_frente")
+	
 	
 	anim.play(animation)
 	
