@@ -26,7 +26,7 @@ func _input(event):
 			joystick_active = false
 		
 		if  $attack_bt.is_pressed() == false:
-			joystick_active = false
+			joystick_active_atk = false
 			Global.is_atk = false
 
 func _physics_process(_delta):
