@@ -16,6 +16,8 @@ var esta_atacando := false
 var se_moveu := false
 var current_state := 0
 var enter_state := true
+var input_atk :bool
+var is_attack :bool
 enum {parado,andando,atacando,morte}
 
 signal atacando
@@ -28,6 +30,16 @@ func _ready():
 	return connect("died", Global.flower, "revive")
 
 func _physics_process(_delta):
+	if OS.has_touchscreen_ui_hint():
+		input_atk = Global.is_atk
+	else:
+		input_atk = Input.is_action_pressed("Attack")
+		
+	if input_atk:
+		is_attack = true
+	else:
+		is_attack = false
+	
 	match current_state:
 		parado:
 			_parado()
@@ -37,6 +49,9 @@ func _physics_process(_delta):
 			_atacando()
 		morte:
 			_morreu()
+
+	print("botao esta "+ str(is_attack))
+	print("atacando esta "+ str(is_attack))
 
 
 #-----------------------------------------------
@@ -120,7 +135,7 @@ func _check_parado():
 	var new_state = current_state
 	if se_moveu:
 		new_state = andando
-	elif Input.is_action_pressed("Attack") == true and esta_atacando == false:
+	elif is_attack == true and esta_atacando == false:
 		new_state = atacando
 		emit_signal("atacando")
 	elif !life:
@@ -131,7 +146,7 @@ func _check_andando():
 	var new_state = current_state
 	if !se_moveu:
 		new_state = parado
-	elif Input.is_action_just_pressed("Attack") and esta_atacando == false:
+	elif is_attack and esta_atacando == false:
 		new_state = atacando
 		emit_signal("atacando")
 	elif !life:
@@ -140,7 +155,7 @@ func _check_andando():
 
 func _check_atacando():
 	var new_state = current_state
-	if Input.is_action_pressed("Attack") == false and esta_atacando == true:
+	if is_attack == false and esta_atacando == true:
 		new_state = parado
 		lingua.z_index = -1
 		Global.can_attack = false
