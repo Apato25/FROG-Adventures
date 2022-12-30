@@ -11,13 +11,13 @@ radius = 16.0
 script = ExtResource( 2 )
 
 [node name="walk_bt" type="TouchScreenButton" parent="."]
-position = Vector2( 11, 100 )
-scale = Vector2( 2, 2 )
+position = Vector2( 29, 100 )
+scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="attack_bt" type="TouchScreenButton" parent="."]
 position = Vector2( 256, 100 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.5, 1.5 )
 normal = ExtResource( 3 )
 shape = SubResource( 1 )
