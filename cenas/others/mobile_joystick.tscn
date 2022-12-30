@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/others/walk_button.png" type="Texture" id=1]
+[ext_resource path="res://cenas/others/mobile_joystick.gd" type="Script" id=2]
+[ext_resource path="res://sprites/others/attack_button.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0
+
+[node name="mobile_joystick" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="walk_bt" type="TouchScreenButton" parent="."]
+position = Vector2( 11, 100 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 1 )
+shape = SubResource( 1 )
+
+[node name="attack_bt" type="TouchScreenButton" parent="."]
+position = Vector2( 256, 100 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 3 )
+shape = SubResource( 1 )

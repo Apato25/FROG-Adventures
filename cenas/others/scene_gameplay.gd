@@ -9,8 +9,10 @@ func _ready():
 	if OS.has_touchscreen_ui_hint():
 		$debug_device.text = "mobile"
 		$mobile_controls.set_visible(true)
+		$mobile_controls/mobile_joystick.set_visible(true)
 	else:
 		$debug_device.text = "pc"
+		$mobile_controls/mobile_joystick.set_visible(false)
 		$mobile_controls.set_visible(false)
 	
 	

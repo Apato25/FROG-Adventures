@@ -7,6 +7,8 @@ var hitted := true
 var life := 3
 var spd = 100.0
 var player_velo = Vector2.ZERO
+var attack_vec = Vector2.ZERO
+var mobile_vec = Vector2.ZERO
 onready var anim := $player_pos2d/animFrog
 onready var lingua := $Lingua
 
@@ -49,11 +51,9 @@ func _parado():
 	_set_state(_check_parado())
 
 func _andando():
-	
 	var animation = (
-		"andando_para_baixo" if _get_direction().y > 0
-		else "andando_de_costas" if _get_direction().y < 0
-		else "andando_de_frente"
+		"andando_para_baixo" if _get_direction().y > 0 else "andando_de_costas" 
+		if _get_direction().y > 0 else "andando_de_frente"
 	)
 	
 	anim.play(animation)
@@ -67,7 +67,11 @@ func _andando():
 
 func _atacando():
 	var lingua_pos = $Lingua/lingua_normal/pos_lingua
-	var mouse_pos = get_local_mouse_position()
+	var atk_pos 
+	if OS.has_touchscreen_ui_hint():
+		atk_pos = attack_vec
+	else:
+		atk_pos = get_local_mouse_position()
 	
 	if lingua_pos.position.y > 0 and lingua_pos.position.x < 30 and lingua_pos.position.x > -30:
 		anim.play("atacando_para_baixo")
@@ -83,8 +87,8 @@ func _atacando():
 	
 #	print(lingua_pos.position.x)
 	if lingua_pos.position.x:
-		$player_pos2d.scale.x = -1 if mouse_pos.x < 0 else 1
-		lingua.position.x = -3 if mouse_pos.x < 0 else 3
+		$player_pos2d.scale.x = -1 if atk_pos.x < 0 else 1
+		lingua.position.x = -3 if atk_pos.x < 0 else 3
 	
 	
 	Global.can_attack = true
@@ -144,14 +148,20 @@ func _set_state(new_state): #seleciona o novo estado do peixe
 #-----------------------------------------------
 
 func _get_direction(): #pega a posição que o player vai se mover
-	return Vector2(
-		Input.get_axis("ui_left", "ui_right"),
-		Input.get_axis("ui_up", "ui_down")
-	)
+	if OS.has_touchscreen_ui_hint():
+		return Vector2(mobile_vec)
+	else:
+		return Vector2(
+				Input.get_axis("ui_left", "ui_right"),
+				Input.get_axis("ui_up", "ui_down")
+			)
 
 func _move(): #aplica velocidade no player o fazendo se mover para a direção indicada
-	var dir = _get_direction()
+	var dir
+	dir = _get_direction()
 	player_velo = lerp(player_velo,dir.normalized() * spd,0.2)
+	
+	
 	se_moveu = 1 if dir else 0
 	player_velo = move_and_slide(player_velo)
 	global_position.x = clamp(global_position.x, 10, get_viewport_rect().size.x -10)
@@ -209,3 +219,11 @@ func death_part():
 func _on_death_cooldown_timeout():
 	emit_signal("died")
 	queue_free()
+
+func _on_mobile_joystick_use_move_vector(move_vector):
+	mobile_vec = move_vector
+
+
+func _on_mobile_joystick_use_move_attack(move_attack_vec):
+	Global.atk_mobile_pos = move_attack_vec
+	attack_vec = move_attack_vec

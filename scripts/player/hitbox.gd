@@ -1,12 +1,16 @@
 extends Area2D
 
 var time := true
+var atk_pos
+var atk_pos2
 
 func _ready():
 	return get_parent().connect("attack", self, "disabled")
 
 func _on_timer_timeout():
+	
 	look_at(get_global_mouse_position())
+	
 	$shape.shape.extents.x = lerp(
 		$shape.shape.extents.x,
 		min(

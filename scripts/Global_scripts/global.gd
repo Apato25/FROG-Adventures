@@ -2,6 +2,8 @@ extends Node2D
 
 var flower :Node2D
 var can_attack
+var atk_mobile_pos
+
 
 func new_song(song:AudioStreamMP3, volume:int = -15):
 	var radio = AudioStreamPlayer.new()
