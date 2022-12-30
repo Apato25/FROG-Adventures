@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://cenas/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/others/Paused_UI.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://songs/music/vntrack17.mp3" type="AudioStream" id=12]
 [ext_resource path="res://cenas/others/ui_morte.tscn" type="PackedScene" id=13]
 [ext_resource path="res://cenas/others/congratulations.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sprites/others/home_button.png" type="Texture" id=15]
+[ext_resource path="res://cenas/others/mobile_joystick.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Curve2D" id=15]
 _data = {
@@ -23,11 +25,20 @@ _data = {
 [node name="Teste" type="Node2D"]
 script = ExtResource( 11 )
 
+[node name="debug_device" type="Label" parent="."]
+visible = false
+margin_left = 137.0
+margin_top = 15.0
+margin_right = 205.0
+margin_bottom = 29.0
+text = "plataforma"
+align = 1
+
 [node name="Map_01" parent="." instance=ExtResource( 4 )]
 z_index = 1
 
 [node name="UI" type="Node2D" parent="."]
-position = Vector2( 168, 81.7027 )
+position = Vector2( 168, 81.703 )
 z_index = 1
 
 [node name="life_bar" type="TextureProgress" parent="UI"]
@@ -57,7 +68,7 @@ position = Vector2( 30, -30 )
 rotation = 3.14159
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 168.602, 62.5796 )
+position = Vector2( 168, 62.58 )
 
 [node name="parabens" parent="." instance=ExtResource( 14 )]
 
@@ -73,5 +84,24 @@ layer = 2
 [node name="audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 volume_db = -20.0
+
+[node name="mobile_controls" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TextureButton" type="TextureButton" parent="mobile_controls"]
+margin_left = 305.0
+margin_top = 1.0
+margin_right = 329.0
+margin_bottom = 25.0
+action_mode = 0
+texture_normal = ExtResource( 15 )
+expand = true
+
+[node name="mobile_joystick" parent="mobile_controls" instance=ExtResource( 16 )]
+layer = 2
+
+[connection signal="pressed" from="mobile_controls/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="use_move_attack" from="mobile_controls/mobile_joystick" to="YSort/Player" method="_on_mobile_joystick_use_move_attack"]
+[connection signal="use_move_vector" from="mobile_controls/mobile_joystick" to="YSort/Player" method="_on_mobile_joystick_use_move_vector"]
 
 [editable path="YSort/spawn"]
