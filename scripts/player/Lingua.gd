@@ -16,7 +16,7 @@ export (int) var reach = 60
 var sfx := true
 var lingua_pos
 var is_attack = false
-var input_atk
+var input_atk :bool
 signal attack
 
 func _physics_process(delta):

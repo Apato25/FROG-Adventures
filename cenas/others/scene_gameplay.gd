@@ -19,9 +19,6 @@ func _ready():
 	transition_index.layer = 0
 	$audio.playing = true
 
-
-
-
 func _on_TextureButton_pressed():
 	$Paused_UI.set_visible(!get_tree().paused)
 	get_tree().paused = !get_tree().paused

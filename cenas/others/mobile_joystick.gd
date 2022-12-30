@@ -30,7 +30,7 @@ func _input(event):
 			Global.is_atk = false
 
 func _physics_process(_delta):
-	print(Global.atk_mobile_pos)
+#	print(Global.atk_mobile_pos)
 	if joystick_active:
 		emit_signal("use_move_attack",move_attack_vec)
 		emit_signal("use_move_vector",move_vector)
@@ -46,8 +46,7 @@ func calculate_move_vector(event_position):
 	return (event_position - texture_center).normalized()
 
 func calculate_move_vector_atk(event_position):
-	return(event_position)
-#	var texture_center =  $attack_bt.position + Vector2(16,16)
-#	return (event_position - texture_center).normalized()
+	var texture_center =  $attack_bt.position + Vector2(16,16)
+	return (event_position - texture_center)
 
 
