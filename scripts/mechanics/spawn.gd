@@ -16,6 +16,10 @@ signal flower_xp
 signal dead_horde
 
 func _ready():
+	if OS.has_touchscreen_ui_hint():
+		$ui/UI_count_horda.rect_position = Vector2(7,0)
+	else:
+		$ui/UI_count_horda.rect_position = Vector2(7,151)
 	
 	winner()
 	randomize()

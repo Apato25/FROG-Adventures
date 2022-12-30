@@ -81,10 +81,10 @@ position = Vector2( 168, 95 )
 texture = ExtResource( 4 )
 
 [node name="UI_count_horda" type="Control" parent="ui"]
-margin_left = 6.80066
-margin_top = 151.695
-margin_right = 46.8007
-margin_bottom = 191.695
+margin_left = 7.0
+margin_top = 151.0
+margin_right = 47.0
+margin_bottom = 191.0
 
 [node name="count" type="Label" parent="ui/UI_count_horda"]
 material = SubResource( 5 )
