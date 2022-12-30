@@ -5,6 +5,8 @@ onready var lingua = $lingua_normal/lingua
 onready var posLingua = $lingua_normal/pos_lingua
 onready var inipos = $lingua_normal/pos_inicio
 
+onready var shape = $area/shape
+
 #reflexo da lingua
 onready var lingua_ref = $lingua__reflection/lingua
 onready var posLingua_ref = $lingua__reflection/pos_lingua
@@ -14,17 +16,20 @@ export (int) var reach = 60
 var sfx := true
 var lingua_pos
 var is_attack = false
+var input_atk
 signal attack
 
 func _physics_process(delta):
-	print(lingua_pos)
+#	print(lingua_pos)
 	
 	if OS.has_touchscreen_ui_hint():
 		lingua_pos = Global.atk_mobile_pos
+		input_atk = Global.is_atk
 	else:
 		lingua_pos = get_local_mouse_position()
+		input_atk = Input.is_action_pressed("Attack")
 	
-	if Input.is_action_pressed("Attack") or Global.is_atk:
+	if input_atk:
 		is_attack = true
 	else:
 		is_attack = false
@@ -33,6 +38,7 @@ func _physics_process(delta):
 	if is_attack == true and Global.can_attack == true:
 		posLingua.position = posLingua.position.linear_interpolate(lingua_pos.limit_length(reach), delta * 20)
 		lingua.set_point_position(1,posLingua.position)
+		shape.shape.segments = lingua.points
 		emit_signal("attack", true)
 		if sfx:
 			sfx = false

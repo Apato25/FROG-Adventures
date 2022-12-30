@@ -3,8 +3,6 @@ extends Node2D
 onready var transition_index = $transition
 onready var anim = $transition/fill/anim
 
-
-
 func _ready():
 	if OS.has_touchscreen_ui_hint():
 		$debug_device.text = "mobile"
