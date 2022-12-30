@@ -18,6 +18,7 @@ signal dead_horde
 func _ready():
 	if OS.has_touchscreen_ui_hint():
 		$ui/UI_count_horda.rect_position = Vector2(7,0)
+		$ui/UI.hide()
 	else:
 		$ui/UI_count_horda.rect_position = Vector2(7,151)
 	
