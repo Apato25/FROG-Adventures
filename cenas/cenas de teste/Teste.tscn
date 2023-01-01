@@ -101,7 +101,5 @@ expand = true
 layer = 2
 
 [connection signal="pressed" from="mobile_controls/TextureButton" to="." method="_on_TextureButton_pressed"]
-[connection signal="use_move_attack" from="mobile_controls/mobile_joystick" to="YSort/Player" method="_on_mobile_joystick_use_move_attack"]
-[connection signal="use_move_vector" from="mobile_controls/mobile_joystick" to="YSort/Player" method="_on_mobile_joystick_use_move_vector"]
 
 [editable path="YSort/spawn"]

@@ -30,6 +30,9 @@ func _ready():
 	return connect("died", Global.flower, "revive")
 
 func _physics_process(_delta):
+	mobile_vec = Global.move_mobile_pos
+	attack_vec = Global.atk_mobile_pos
+	
 	if OS.has_touchscreen_ui_hint():
 		input_atk = Global.is_atk
 	else:
@@ -175,7 +178,8 @@ func _set_state(new_state): #seleciona o novo estado do peixe
 
 func _get_direction(): #pega a posição que o player vai se mover
 	if OS.has_touchscreen_ui_hint():
-		return Vector2(mobile_vec)
+		return mobile_vec
+		#return Vector2(mobile_vec)
 	else:
 		return Vector2(
 				Input.get_axis("ui_left", "ui_right"),
@@ -246,10 +250,9 @@ func _on_death_cooldown_timeout():
 	emit_signal("died")
 	queue_free()
 
-func _on_mobile_joystick_use_move_vector(move_vector):
-	mobile_vec = move_vector
+#func _on_mobile_joystick_use_move_vector(move_vector):
+#	mobile_vec = move_vector
 
 
-func _on_mobile_joystick_use_move_attack(move_attack_vec):
-	Global.atk_mobile_pos = move_attack_vec
-	attack_vec = move_attack_vec
+#func _on_mobile_joystick_use_move_attack(move_attack_vec):
+#	attack_vec = move_attack_vec
